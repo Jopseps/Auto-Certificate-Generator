@@ -6,7 +6,7 @@ import os
 if not os.path.exists('sertifikalar'):
     os.makedirs('sertifikalar')
 
-# Fontu yükle
+# Fontu yükle (Hesaplama için)
 custom_font = fitz.Font(fontfile="LibreBaskerville.ttf")
 
 # Verileri oku
@@ -17,38 +17,46 @@ for index, row in df.iterrows():
     page = doc[0]  
     sayfa_genisligi = page.rect.width
     
+    # İsmi temizle ve büyük harf yap
     isim = str(row['Column 2']).upper().strip()
+    
+    # HATA AYIKLAMA: Python bu ismi kaç karakter sayıyor terminalde görelim
+    print(f"İşleniyor: {isim} (Uzunluk: {len(isim)})")
+
     font_boyutu = 35.2
     page.insert_font(fontname="f1", fontfile="LibreBaskerville.ttf")
     
-    # --- SATIR BÖLME MANTIĞI ---
+    # --- YENİLENMİŞ SATIR BÖLME MANTIĞI ---
     satirlar = []
+    # 15 karakter ve üzeri ise ve içinde boşluk varsa böl
     if len(isim) >= 15 and " " in isim:
-        # İsmi boşluklardan böl
-        kelimeler = isim.split(" ")
-        orta_nokta = len(kelimeler) // 2
-        # Kelimeleri iki gruba ayır
-        satirlar.append(" ".join(kelimeler[:orta_nokta + (1 if len(kelimeler) % 2 != 0 else 0)]))
-        satirlar.append(" ".join(kelimeler[orta_nokta + (1 if len(kelimeler) % 2 != 0 else 0):]))
+        kelimeler = isim.split() # split() çift boşlukları da halleder
+        orta = len(kelimeler) // 2
+        
+        # Eğer 2 kelimeyse (örn: DİLARA MAHMUDOĞLU) orta 1 olur.
+        # [:1] -> DİLARA, [1:] -> MAHMUDOĞLU olur.
+        s1 = " ".join(kelimeler[:orta])
+        s2 = " ".join(kelimeler[orta:])
+        
+        satirlar = [s1, s2]
+        print(f"  -> BÖLÜNDÜ: '{s1}' ve '{s2}'")
     else:
-        # İsim kısa ise tek satır
-        satirlar.append(isim)
+        satirlar = [isim]
 
     # --- YAZDIRMA VE HİZALAMA ---
     hedef_y = 307
-    # İki satır varsa, ilk satırı biraz yukarı, ikinciyi biraz aşağı almalıyız
-    satir_araligi = 40 # İki satır arasındaki dikey mesafe (point)
+    satir_araligi = 45 # Satır arasını biraz daha açalım ki net görünsün
     
     for i, satir in enumerate(satirlar):
-        # Her satırın genişliğini ayrı hesapla (Ortalama için şart)
+        # Satır genişliğini ölç
         metin_genisligi = custom_font.text_length(satir, fontsize=font_boyutu)
         
-        # Tam merkezi bul (Kendi kodundaki -100 offsetini korudum ama gerekmiyorsa kaldırabilirsin)
+        # TAM MERKEZLEME: -100'ü kaldırdım, istersen küçük bir değer (-10 gibi) ekle
         merkez_x = ((sayfa_genisligi - metin_genisligi) / 2) - 100
         
-        # Eğer iki satır varsa, y koordinatını ayarla
+        # Y koordinatı hesabı
         if len(satirlar) > 1:
-            # İlk satırı hedef_y'den biraz yukarı, ikinciyi biraz aşağı basar
+            # İlk satırı 22 birim yukarı, ikinciyi 23 birim aşağı koyar (toplam 45)
             guncel_y = hedef_y - (satir_araligi / 2) + (i * satir_araligi)
         else:
             guncel_y = hedef_y
@@ -65,8 +73,10 @@ for index, row in df.iterrows():
     temiz_isim = "".join(c for c in isim if c.isalnum() or c in (' ', '_')).rstrip()
     cikti_yolu = f"sertifikalar/{temiz_isim.replace(' ', '_')}.pdf"
     
-    doc.save(cikti_yolu)
-    doc.close()
-    print(f"Oluşturuldu: {cikti_yolu}")
+    try:
+        doc.save(cikti_yolu)
+        doc.close()
+    except Exception as e:
+        print(f"  !! HATA: {cikti_yolu} kaydedilemedi. Dosya açık olabilir mi? {e}")
 
-print("Tüm işlemler bitti!")
+print("\nTüm işlemler bitti! Sertifikalar klasörünü kontrol edebilirsin.")
