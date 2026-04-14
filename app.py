@@ -9,6 +9,18 @@ import subprocess
 import math
 import time
 import json
+import locale
+
+TRANSLATIONS = {
+    "en": {
+        "title": "Certificate Generator", "settings": "⚙  Settings", "files": "FILES", "tpl_pdf": "Template PDF", "excel": "Excel File", "out_dir": "Output Dir", "font": "FONT", "font_file": "Font File", "sys_font": "System Font", "file": "File", "family": "Family", "text_ops": "TEXT OPTIONS", "font_size": "Font Size", "text_y": "Text Y", "x_off": "X Offset", "line_sp": "Line Space", "rot": "Rotation °", "snap": "Snap to 15°", "color": "Color", "align": "ALIGNMENT", "a_left": "Left", "a_center": "Center", "a_right": "Right", "split": "TEXT SPLITTING", "s_auto": "Auto", "s_none": "No Split", "s_always": "Always", "s_thresh": "Threshold", "data": "DATA", "name_col": "Name Col", "gen_all": "▶  Generate All", "ready": "Ready", "settings_hdr": "SETTINGS", "save": "💾 Save", "import": "📂 Import", "preview_hdr": "📄  Certificate Preview", "prev": "◀  Prev", "next": "Next  ▶", "no_data": "No data loaded", "sel_tpl": "Select a template PDF to preview", "fail_render": "Cannot render preview\n(check template and font paths)", "done_gen": "Done! {count} certificates generated.", "gen_msg": "Generating: {name}  ({idx}/{total})", "sav_msg": "Settings saved to {path}", "imp_msg": "Settings imported from {path}",
+        "tut1_t": "Welcome! 👋", "tut1_b": "This is the Certificate Generator.\n\nIt reads names from an Excel file and\nrenders them onto a PDF template to\ncreate personalized certificates.", "tut2_t": "1. Load Files 📁", "tut2_b": "Start by loading your files in the\nFILES section on the left panel:\n\n• Template PDF — your certificate design\n• Excel File — list of names\n• Output Dir — where certificates are saved\n\nFiles in the app folder are auto-detected.", "tut3_t": "2. Choose Font 🔤", "tut3_b": "Under FONT, pick your text font:\n\n• Font File — browse for a .ttf / .otf file\n• System Font — pick from installed fonts\n\nToggle between the two with the\nradio buttons.", "tut4_t": "3. Text Options ✏️", "tut4_b": "Adjust how the name appears:\n\n• Font Size, Text Y, X Offset\n• Line Spacing (for multi-line names)\n• Rotation (with optional 15° snap)\n• Color picker\n\nAll changes update the preview live.", "tut5_t": "4. Interactive Preview 🖱️", "tut5_b": "Click on the text in the preview to\nactivate selection handles:\n\n• Drag the text to reposition\n• Drag corner handles to resize\n• Drag the top circle to rotate\n\nClick outside the box to deactivate.\nUse ← → arrow keys to browse names.", "tut6_t": "5. Alignment & Splitting 📐", "tut6_b": "• ALIGNMENT — Left / Center / Right\n\n• TEXT SPLITTING modes:\n  Auto — splits long names (≥ threshold)\n  No Split — always single line\n  Always — always first + last name\n", "tut7_t": "6. Generate & Export 🚀", "tut7_b": "Once you're happy with the preview:\n\n• Click \"Generate All\" to batch-create\n  all certificates as PDFs\n\n• Use Save / Import to store your\n  settings as a JSON file for reuse.", "tut8_t": "You're all set! ✅", "tut8_b": "That's everything you need to know.\n\nClick this \"?\" button anytime\nto see this tutorial again.\n\nHappy certificate making! 🎓",
+    },
+    "tr": {
+        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Excel Dosyası", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Dosya Ekle", "sys_font": "Sistem Fontu", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluk", "rot": "Dönme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "gen_all": "▶  Hepsini Çıkar", "ready": "Hazır", "settings_hdr": "AYARLAR", "save": "💾 Kaydet", "import": "📂 Kopyala", "preview_hdr": "📄  Sertifika Önizleme", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yok", "sel_tpl": "Önizleme için PDF şablonu seçin", "fail_render": "Önizleme çalışamadı\n(şablon/font yollarını kontrol ediniz)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Üretiliyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path}'e kaydedildi", "imp_msg": "Ayarlar {path}'den içe aktarıldı",
+        "tut1_t": "Hoşgeldiniz! 👋", "tut1_b": "Bu, Sertifika Oluşturucusu'dur.\n\nBir Excel dosyasından isimleri okur ve\nkişiselleştirilmiş sertifikalar oluşturmak\niçin bunları şablonun üzerine yazar.", "tut2_t": "1. Dosyaları Yükle 📁", "tut2_b": "Sol paneldeki DOSYALAR menüsünden\ndosyalarınızı yükleyerek başlayın:\n\n• Şablon PDF — sertifika tasarımınız\n• Excel Dosyası — isimlendirme\n• Çıktı Klasörü — kaydedileceği konum\n\nDizin içindeki dosyalar otomatik bulunur.", "tut3_t": "2. Font Seçimi 🔤", "tut3_b": "YAZI TİPİ altından fontunuzu seçin:\n\n• Dışarıdan — bir .ttf/.otf dosyası\n• Sistem Fontu — yüklü fontlardan biri\n\nDüğmeler ile iki format arasında\ngeçiş yapabilirsiniz.", "tut4_t": "3. Metin Ayarları ✏️", "tut4_b": "Yazının duruşunu konfigüre edin:\n\n• Yazı Boyutu, Y, X Ofseti\n• Satır Boşluk (çok satırlı olanlar için)\n• Dönme (isteğe bağlı 15° yaslama)\n• Renk seçici\n\nDeğişiklikler anlık görünür.", "tut5_t": "4. Etkileşimli Önizleme 🖱️", "tut5_b": "Kontrolleri görmek için önizlemedeki\nmetne doğrudan tıklayın:\n\n• Konumlandırmak için sürükleyin\n• Boyutunu ayarlamak için köşeye\n• Döndürmek için tepeye sürükleyin\n\nOk tuşlarıyla isimleri ← → gezin.", "tut6_t": "5. Hizalama & Bölme 📐", "tut6_b": "• HİZALAMA — Sol / Orta / Sağ\n\n• METİN BÖLME modları:\n  Oto — uzunları (≥ eşik) zorla böler\n  Bölme — her zaman tek satır tutar\n  Her Zaman — her zaman isim + soyisim\n", "tut7_t": "6. Dışa Aktarım 🚀", "tut7_b": "Memnun kaldığınızda:\n\n• Bütün sertifikaları PDF yazdırmak\n  için \"Hepsini Çıkar\"a tıklayın\n\n• Tüm projenizin ayarlarını JSON'a\n  Kaydet / İçe Aktar yapabilirsiniz.", "tut8_t": "Her Şey Hazır! ✅", "tut8_b": "Bilmeniz gereken tek detay buydu.\n\nİstediğiniz bir zaman sağ üstteki \"?\"\nbutonuna tıklayarak tekrar okuyun.\n\nİyi sertifikalamalar! 🎓",
+    }
+}
 
 # ─── System Font Discovery ───────────────────────────────
 
@@ -71,10 +83,13 @@ class CertificateApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Certificate Generator")
+        # Internal language state & string catalog
+        self._lang_widgets = []
+        self._lang = self._detect_language()
+
+        self.title(self._("title"))
         self.geometry("1200x750")
         self.minsize(900, 600)
-        self.configure(bg="#1e1e2e")
 
         self.system_fonts = get_system_fonts()
 
@@ -88,41 +103,98 @@ class CertificateApp(tk.Tk):
         self.bind("<Right>", lambda e: self.navigate(1))
 
         self._auto_detect_files()
+        
+    def _(self, key):
+        return TRANSLATIONS.get(self._lang, TRANSLATIONS["en"]).get(key, key)
+
+    def _add_l(self, widget, key, is_text=True):
+        if is_text:
+            widget.config(text=self._(key))
+        self._lang_widgets.append((widget, key, is_text))
+        return widget
+
+    def _detect_language(self):
+        try:
+            lang = locale.getdefaultlocale()[0]
+            if lang and lang.startswith('tr'):
+                return "tr"
+        except Exception:
+            pass
+        return "en"
 
     def _configure_styles(self):
-        bg = "#1e1e2e"
-        fg = "#cdd6f4"
-        accent = "#89b4fa"
-        entry_bg = "#313244"
-        btn_bg = "#45475a"
-        btn_active = "#585b70"
+        if not hasattr(self, "theme"):
+            self.theme = "dark"
 
-        self.style.configure("TFrame", background=bg)
-        self.style.configure("TLabel", background=bg, foreground=fg, font=("Inter", 10))
-        self.style.configure("Header.TLabel", background=bg, foreground=accent, font=("Inter", 13, "bold"))
-        self.style.configure("Section.TLabel", background=bg, foreground="#a6adc8", font=("Inter", 9, "bold"))
-        self.style.configure("TButton", background=btn_bg, foreground=fg, font=("Inter", 10), borderwidth=0, padding=6)
-        self.style.map("TButton", background=[("active", btn_active)])
-        self.style.configure("Accent.TButton", background=accent, foreground="#1e1e2e", font=("Inter", 11, "bold"), padding=10)
-        self.style.map("Accent.TButton", background=[("active", "#74c7ec")])
-        self.style.configure("Nav.TButton", background=btn_bg, foreground=fg, font=("Inter", 10), padding=4)
-        self.style.configure("TEntry", fieldbackground=entry_bg, foreground=fg, insertcolor=fg, borderwidth=0)
-        self.style.configure("TSpinbox", fieldbackground=entry_bg, foreground=fg, insertcolor=fg, borderwidth=0, arrowcolor=fg)
-        self.style.configure("TCombobox", fieldbackground=entry_bg, foreground=fg, borderwidth=0)
-        self.style.map("TCombobox", fieldbackground=[("readonly", entry_bg)])
-        self.style.configure("green.Horizontal.TProgressbar", troughcolor=entry_bg, background="#a6e3a1", borderwidth=0)
-        self.style.configure("TRadiobutton", background=bg, foreground=fg, font=("Inter", 9))
-        self.style.map("TRadiobutton", background=[("active", bg)])
+        if self.theme == "dark":
+            self.c_bg = "#1e1e2e"
+            self.c_fg = "#cdd6f4"
+            self.c_accent = "#89b4fa"
+            self.c_entry_bg = "#313244"
+            self.c_btn_bg = "#45475a"
+            self.c_btn_active = "#585b70"
+            self.c_canvas_bg = "#181825"
+            self.c_text_inactive = "#6c7086"
+            self.c_error = "#f38ba8"
+            self.c_overlay = "#11111b"
+            self.c_success = "#a6e3a1"
+            self.c_handle_fill = "#89b4fa"
+            self.c_handle_outline = "#cdd6f4"
+        else:
+            self.c_bg = "#eff1f5"
+            self.c_fg = "#4c4f69"
+            self.c_accent = "#1e66f5"
+            self.c_entry_bg = "#ccd0da"
+            self.c_btn_bg = "#bcc0cc"
+            self.c_btn_active = "#acb0be"
+            self.c_canvas_bg = "#e6e9ef"
+            self.c_text_inactive = "#7c7f93"
+            self.c_error = "#d20f39"
+            self.c_overlay = "#dce0e8"
+            self.c_success = "#40a02b"
+            self.c_handle_fill = "#1e66f5"
+            self.c_handle_outline = "#eff1f5"
+
+        self.style.configure("TFrame", background=self.c_bg)
+        self.style.configure("TLabel", background=self.c_bg, foreground=self.c_fg, font=("Inter", 10))
+        self.style.configure("Header.TLabel", background=self.c_bg, foreground=self.c_accent, font=("Inter", 13, "bold"))
+        self.style.configure("Section.TLabel", background=self.c_bg, foreground=self.c_text_inactive, font=("Inter", 9, "bold"))
+        self.style.configure("TButton", background=self.c_btn_bg, foreground=self.c_fg, font=("Inter", 10), borderwidth=0, padding=6)
+        self.style.map("TButton", background=[("active", self.c_btn_active)])
+        self.style.configure("Accent.TButton", background=self.c_accent, foreground=self.c_bg, font=("Inter", 11, "bold"), padding=10)
+        self.style.map("Accent.TButton", background=[("active", self.c_bg)])
+        self.style.configure("Nav.TButton", background=self.c_btn_bg, foreground=self.c_fg, font=("Inter", 10), padding=4)
+        self.style.configure("TEntry", fieldbackground=self.c_entry_bg, foreground=self.c_fg, insertcolor=self.c_fg, borderwidth=0)
+        self.style.configure("TSpinbox", fieldbackground=self.c_entry_bg, foreground=self.c_fg, insertcolor=self.c_fg, borderwidth=0, arrowcolor=self.c_fg)
+        self.style.configure("TCombobox", fieldbackground=self.c_entry_bg, foreground=self.c_fg, borderwidth=0)
+        self.style.map("TCombobox", fieldbackground=[("readonly", self.c_entry_bg)])
+        self.style.configure("green.Horizontal.TProgressbar", troughcolor=self.c_entry_bg, background=self.c_success, borderwidth=0)
+        self.style.configure("TRadiobutton", background=self.c_bg, foreground=self.c_fg, font=("Inter", 9))
+        self.style.map("TRadiobutton", background=[("active", self.c_bg)])
+        self.style.configure("TCheckbutton", background=self.c_bg, foreground=self.c_fg, font=("Inter", 9))
+        self.style.map("TCheckbutton", background=[("active", self.c_bg)])
 
     def build_ui(self):
-        # Top bar with help button
+        # Top bar with buttons
         topbar = ttk.Frame(self)
         topbar.pack(fill=tk.X, padx=12, pady=(8, 0))
         ttk.Label(topbar, text="", style="TLabel").pack(side=tk.LEFT, fill=tk.X, expand=True)
+
         self.help_btn = tk.Button(topbar, text="?", font=("Inter", 12, "bold"),
-            bg="#45475a", fg="#cdd6f4", activebackground="#585b70", activeforeground="#cdd6f4",
+            bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
             bd=0, width=3, height=1, cursor="hand2", command=self._start_tutorial)
         self.help_btn.pack(side=tk.RIGHT)
+
+        self.theme_btn = tk.Button(topbar, text="☀️", font=("Inter", 12),
+            bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
+            bd=0, width=3, height=1, cursor="hand2", command=self.toggle_theme)
+        self.theme_btn.pack(side=tk.RIGHT, padx=(0, 6))
+
+        self.lang_btn = tk.Button(topbar, text="EN", font=("Inter", 10, "bold"),
+            bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
+            bd=0, width=4, height=1, cursor="hand2", command=self.toggle_lang)
+        self.lang_btn.pack(side=tk.RIGHT, padx=(0, 6))
+        self._update_lang_btn_text()
 
         main = ttk.Frame(self)
         main.pack(fill=tk.BOTH, expand=True, padx=12, pady=(4, 12))
@@ -140,7 +212,7 @@ class CertificateApp(tk.Tk):
     # ─── Settings Panel ───────────────────────────────────────
 
     def _build_settings_panel(self, parent):
-        self._settings_canvas = tk.Canvas(parent, bg="#1e1e2e", highlightthickness=0)
+        self._settings_canvas = tk.Canvas(parent, bg=self.c_bg, highlightthickness=0)
         scrollbar = ttk.Scrollbar(parent, orient="vertical", command=self._settings_canvas.yview)
         self.settings_inner = ttk.Frame(self._settings_canvas)
 
@@ -148,7 +220,11 @@ class CertificateApp(tk.Tk):
             "<Configure>",
             lambda e: self._settings_canvas.configure(scrollregion=self._settings_canvas.bbox("all"))
         )
-        self._settings_canvas.create_window((0, 0), window=self.settings_inner, anchor="nw", width=336)
+        self._settings_canvas.bind(
+            "<Configure>",
+            lambda e: self._settings_canvas.itemconfig(self._settings_window_id, width=e.width)
+        )
+        self._settings_window_id = self._settings_canvas.create_window((0, 0), window=self.settings_inner, anchor="nw", width=336)
         self._settings_canvas.configure(yscrollcommand=scrollbar.set)
 
         self._settings_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -173,169 +249,156 @@ class CertificateApp(tk.Tk):
 
         inner = self.settings_inner
 
-        ttk.Label(inner, text="⚙  Settings", style="Header.TLabel").pack(anchor="w", pady=(0, 12))
+        self._add_l(ttk.Label(inner, style="Header.TLabel"), "settings").pack(anchor="w", pady=(0, 4))
 
         # --- File selectors ---
-        ttk.Label(inner, text="FILES", style="Section.TLabel").pack(anchor="w", pady=(8, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "files").pack(anchor="w", pady=(4, 2))
 
         self.template_var = tk.StringVar()
-        self._file_row(inner, "Template PDF", self.template_var, self._browse_template)
+        self._file_row(inner, "tpl_pdf", self.template_var, self._browse_template)
 
         self.excel_var = tk.StringVar()
-        self._file_row(inner, "Excel File", self.excel_var, self._browse_excel)
+        self._file_row(inner, "excel", self.excel_var, self._browse_excel)
 
         self.outdir_var = tk.StringVar(value="sertifikalar")
-        self._file_row(inner, "Output Dir", self.outdir_var, self._browse_outdir)
+        self._file_row(inner, "out_dir", self.outdir_var, self._browse_outdir)
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Font options ---
-        ttk.Label(inner, text="FONT", style="Section.TLabel").pack(anchor="w", pady=(0, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "font").pack(anchor="w", pady=(0, 2))
 
         self.font_source_var = tk.StringVar(value="file")
         font_src_frame = ttk.Frame(inner)
-        font_src_frame.pack(fill=tk.X, pady=2)
-        ttk.Radiobutton(font_src_frame, text="Font File", variable=self.font_source_var, value="file",
-                        command=self._on_font_source_change).pack(side=tk.LEFT, padx=(0, 12))
-        ttk.Radiobutton(font_src_frame, text="System Font", variable=self.font_source_var, value="system",
-                        command=self._on_font_source_change).pack(side=tk.LEFT)
+        font_src_frame.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Radiobutton(font_src_frame, variable=self.font_source_var, value="file", command=self._on_font_source_change), "font_file").pack(side=tk.LEFT, padx=(0, 12))
+        self._add_l(ttk.Radiobutton(font_src_frame, variable=self.font_source_var, value="system", command=self._on_font_source_change), "sys_font").pack(side=tk.LEFT)
 
-        # Container for font file / system font
         self.font_selector_container = ttk.Frame(inner)
-        self.font_selector_container.pack(fill=tk.X, pady=2)
+        self.font_selector_container.pack(fill=tk.X, pady=1)
 
         self.font_var = tk.StringVar()
         self.font_file_frame = ttk.Frame(self.font_selector_container)
         self.font_file_frame.pack(fill=tk.X)
-        ttk.Label(self.font_file_frame, text="File", width=11).pack(side=tk.LEFT)
+        self._add_l(ttk.Label(self.font_file_frame, width=11), "file").pack(side=tk.LEFT)
         ttk.Entry(self.font_file_frame, textvariable=self.font_var, width=14).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 4))
         ttk.Button(self.font_file_frame, text="...", width=3, command=self._browse_font).pack(side=tk.LEFT)
 
         self.system_font_var = tk.StringVar()
         self.system_font_frame = ttk.Frame(self.font_selector_container)
-        ttk.Label(self.system_font_frame, text="Family", width=11).pack(side=tk.LEFT)
+        self._add_l(ttk.Label(self.system_font_frame, width=11), "family").pack(side=tk.LEFT)
         font_families = list(self.system_fonts.keys())
-        self.system_font_combo = ttk.Combobox(self.system_font_frame, textvariable=self.system_font_var,
-                                               values=font_families, state="readonly", width=18)
+        self.system_font_combo = ttk.Combobox(self.system_font_frame, textvariable=self.system_font_var, values=font_families, state="readonly", width=18)
         self.system_font_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.system_font_var.trace_add("write", lambda *_: self._on_setting_change())
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Text options ---
-        ttk.Label(inner, text="TEXT OPTIONS", style="Section.TLabel").pack(anchor="w", pady=(0, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "text_ops").pack(anchor="w", pady=(0, 2))
 
         self.fontsize_var = tk.StringVar(value="35.2")
-        self._spin_row(inner, "Font Size", self.fontsize_var, 1.0, 100.0, 0.5)
+        self._spin_row(inner, "font_size", self.fontsize_var, 1.0, 100.0, 0.5)
 
         self.texty_var = tk.StringVar(value="307")
-        self._spin_row(inner, "Text Y", self.texty_var, 0, 2000, 1)
+        self._spin_row(inner, "text_y", self.texty_var, 0, 2000, 1)
 
         self.xoffset_var = tk.StringVar(value="-100")
-        self._spin_row(inner, "X Offset", self.xoffset_var, -1000, 1000, 5)
+        self._spin_row(inner, "x_off", self.xoffset_var, -1000, 1000, 5)
 
         self.linespace_var = tk.StringVar(value="45")
-        self._spin_row(inner, "Line Space", self.linespace_var, 0, 200, 1)
+        self._spin_row(inner, "line_sp", self.linespace_var, 0, 200, 1)
 
         self.rotation_var = tk.StringVar(value="0")
-        self._spin_row(inner, "Rotation °", self.rotation_var, -180, 180, 1)
+        self._spin_row(inner, "rot", self.rotation_var, -180, 180, 1)
 
-        # Snap to grid checkbox
         self.snap_rotation_var = tk.BooleanVar(value=False)
         snap_frame = ttk.Frame(inner)
-        snap_frame.pack(fill=tk.X, pady=(0, 3))
-        ttk.Checkbutton(snap_frame, text="Snap to 15°", variable=self.snap_rotation_var,
-                        command=self._on_snap_rotation_toggle).pack(side=tk.LEFT, padx=(88, 0))
-        self.style.configure("TCheckbutton", background="#1e1e2e", foreground="#cdd6f4", font=("Inter", 9))
-        self.style.map("TCheckbutton", background=[("active", "#1e1e2e")])
+        snap_frame.pack(fill=tk.X, pady=(0, 1))
+        self._add_l(ttk.Checkbutton(snap_frame, variable=self.snap_rotation_var, command=self._on_snap_rotation_toggle), "snap").pack(side=tk.LEFT, padx=(88, 0))
 
-        # Color picker row
         color_frame = ttk.Frame(inner)
-        color_frame.pack(fill=tk.X, pady=3)
-        ttk.Label(color_frame, text="Color", width=11).pack(side=tk.LEFT)
-        self.color_swatch = tk.Canvas(color_frame, width=28, height=28, highlightthickness=1, highlightbackground="#585b70", cursor="hand2")
+        color_frame.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Label(color_frame, width=11), "color").pack(side=tk.LEFT)
+        self.color_swatch = tk.Canvas(color_frame, width=28, height=28, highlightthickness=1, highlightbackground=self.c_btn_active, cursor="hand2")
         self.color_swatch.pack(side=tk.LEFT, padx=(0, 6))
         self._update_swatch()
         self.color_swatch.bind("<Button-1>", lambda e: self.pick_color())
         self.color_hex_label = ttk.Label(color_frame, text=self._color_to_hex(), font=("Inter", 9))
         self.color_hex_label.pack(side=tk.LEFT)
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Text Alignment ---
-        ttk.Label(inner, text="ALIGNMENT", style="Section.TLabel").pack(anchor="w", pady=(0, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "align").pack(anchor="w", pady=(0, 2))
 
         self.alignment_var = tk.StringVar(value="center")
         align_frame = ttk.Frame(inner)
-        align_frame.pack(fill=tk.X, pady=2)
-        for val, label in [("left", "Left"), ("center", "Center"), ("right", "Right")]:
-            ttk.Radiobutton(align_frame, text=label, variable=self.alignment_var, value=val,
-                            command=self._on_setting_change).pack(side=tk.LEFT, padx=(0, 10))
+        align_frame.pack(fill=tk.X, pady=1)
+        for val, key in [("left", "a_left"), ("center", "a_center"), ("right", "a_right")]:
+            self._add_l(ttk.Radiobutton(align_frame, variable=self.alignment_var, value=val, command=self._on_setting_change), key).pack(side=tk.LEFT, padx=(0, 10))
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Text Splitting ---
-        ttk.Label(inner, text="TEXT SPLITTING", style="Section.TLabel").pack(anchor="w", pady=(0, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "split").pack(anchor="w", pady=(0, 2))
 
         self.split_mode_var = tk.StringVar(value="auto")
         split_frame = ttk.Frame(inner)
-        split_frame.pack(fill=tk.X, pady=2)
-        ttk.Radiobutton(split_frame, text="Auto", variable=self.split_mode_var, value="auto",
-                        command=self._on_setting_change).pack(side=tk.LEFT, padx=(0, 8))
-        ttk.Radiobutton(split_frame, text="No Split", variable=self.split_mode_var, value="none",
-                        command=self._on_setting_change).pack(side=tk.LEFT, padx=(0, 8))
-        ttk.Radiobutton(split_frame, text="Always", variable=self.split_mode_var, value="always",
-                        command=self._on_setting_change).pack(side=tk.LEFT)
+        split_frame.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Radiobutton(split_frame, variable=self.split_mode_var, value="auto", command=self._on_setting_change), "s_auto").pack(side=tk.LEFT, padx=(0, 8))
+        self._add_l(ttk.Radiobutton(split_frame, variable=self.split_mode_var, value="none", command=self._on_setting_change), "s_none").pack(side=tk.LEFT, padx=(0, 8))
+        self._add_l(ttk.Radiobutton(split_frame, variable=self.split_mode_var, value="always", command=self._on_setting_change), "s_always").pack(side=tk.LEFT)
 
         self.split_threshold_var = tk.StringVar(value="19")
-        self._spin_row(inner, "Threshold", self.split_threshold_var, 1, 100, 1)
+        self._spin_row(inner, "s_thresh", self.split_threshold_var, 1, 100, 1)
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Excel column ---
-        ttk.Label(inner, text="DATA", style="Section.TLabel").pack(anchor="w", pady=(0, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "data").pack(anchor="w", pady=(0, 2))
 
         col_frame = ttk.Frame(inner)
-        col_frame.pack(fill=tk.X, pady=3)
-        ttk.Label(col_frame, text="Name Col", width=11).pack(side=tk.LEFT)
+        col_frame.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Label(col_frame, width=11), "name_col").pack(side=tk.LEFT)
         self.column_var = tk.StringVar()
         self.column_combo = ttk.Combobox(col_frame, textvariable=self.column_var, state="readonly", width=18)
         self.column_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Generate ---
-        self.gen_btn = ttk.Button(inner, text="▶  Generate All", style="Accent.TButton", command=self.generate_all)
-        self.gen_btn.pack(fill=tk.X, pady=(4, 6))
+        self.gen_btn = self._add_l(ttk.Button(inner, style="Accent.TButton", command=self.generate_all), "gen_all")
+        self.gen_btn.pack(fill=tk.X, pady=(2, 6))
 
         self.progress_var = tk.IntVar(value=0)
         self.progress_bar = ttk.Progressbar(inner, variable=self.progress_var, maximum=100, style="green.Horizontal.TProgressbar")
         self.progress_bar.pack(fill=tk.X, pady=(0, 4))
 
-        self.status_label = ttk.Label(inner, text="Ready", font=("Inter", 9))
+        self.status_label = self._add_l(ttk.Label(inner, font=("Inter", 9)), "ready")
         self.status_label.pack(anchor="w")
 
-        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=12)
+        ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
         # --- Save / Import Settings ---
-        ttk.Label(inner, text="SETTINGS", style="Section.TLabel").pack(anchor="w", pady=(0, 4))
+        self._add_l(ttk.Label(inner, style="Section.TLabel"), "settings_hdr").pack(anchor="w", pady=(0, 2))
         settings_btns = ttk.Frame(inner)
-        settings_btns.pack(fill=tk.X, pady=2)
-        ttk.Button(settings_btns, text="💾 Save", command=self._save_settings).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 4))
-        ttk.Button(settings_btns, text="📂 Import", command=self._import_settings).pack(side=tk.LEFT, fill=tk.X, expand=True)
+        settings_btns.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Button(settings_btns, command=self._save_settings), "save").pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 4))
+        self._add_l(ttk.Button(settings_btns, command=self._import_settings), "import").pack(side=tk.LEFT, fill=tk.X, expand=True)
 
-    def _file_row(self, parent, label, var, command):
+    def _file_row(self, parent, key, var, command):
         frame = ttk.Frame(parent)
-        frame.pack(fill=tk.X, pady=2)
-        ttk.Label(frame, text=label, width=11).pack(side=tk.LEFT)
+        frame.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Label(frame, width=11), key).pack(side=tk.LEFT)
         entry = ttk.Entry(frame, textvariable=var, width=14)
         entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 4))
         ttk.Button(frame, text="...", width=3, command=command).pack(side=tk.LEFT)
 
-    def _spin_row(self, parent, label, var, from_, to, increment):
+    def _spin_row(self, parent, key, var, from_, to, increment):
         frame = ttk.Frame(parent)
-        frame.pack(fill=tk.X, pady=3)
-        ttk.Label(frame, text=label, width=11).pack(side=tk.LEFT)
+        frame.pack(fill=tk.X, pady=1)
+        self._add_l(ttk.Label(frame, width=11), key).pack(side=tk.LEFT)
         spin = ttk.Spinbox(frame, textvariable=var, from_=from_, to=to, increment=increment, width=10)
         spin.pack(side=tk.LEFT, fill=tk.X, expand=True)
         var.trace_add("write", lambda *_: self._on_setting_change())
@@ -343,24 +406,24 @@ class CertificateApp(tk.Tk):
     # ─── Preview Panel ────────────────────────────────────────
 
     def _build_preview_panel(self, parent):
-        ttk.Label(parent, text="📄  Certificate Preview", style="Header.TLabel").pack(anchor="w", pady=(0, 8))
+        self._add_l(ttk.Label(parent, style="Header.TLabel"), "preview_hdr").pack(anchor="w", pady=(0, 8))
 
         self.preview_frame = ttk.Frame(parent)
         self.preview_frame.pack(fill=tk.BOTH, expand=True)
 
-        self.canvas = tk.Canvas(self.preview_frame, bg="#181825", highlightthickness=0)
+        self.canvas = tk.Canvas(self.preview_frame, bg=self.c_canvas_bg, highlightthickness=0)
         self.canvas.pack(fill=tk.BOTH, expand=True)
 
         nav = ttk.Frame(parent)
         nav.pack(fill=tk.X, pady=(8, 0))
 
-        self.prev_btn = ttk.Button(nav, text="◀  Prev", style="Nav.TButton", command=lambda: self.navigate(-1))
+        self.prev_btn = self._add_l(ttk.Button(nav, style="Nav.TButton", command=lambda: self.navigate(-1)), "prev")
         self.prev_btn.pack(side=tk.LEFT)
 
-        self.nav_label = ttk.Label(nav, text="No data loaded", font=("Inter", 10))
+        self.nav_label = self._add_l(ttk.Label(nav, font=("Inter", 10)), "no_data")
         self.nav_label.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
-        self.next_btn = ttk.Button(nav, text="Next  ▶", style="Nav.TButton", command=lambda: self.navigate(1))
+        self.next_btn = self._add_l(ttk.Button(nav, style="Nav.TButton", command=lambda: self.navigate(1)), "next")
         self.next_btn.pack(side=tk.RIGHT)
 
         # Bind resize
@@ -483,7 +546,7 @@ class CertificateApp(tk.Tk):
 
         # Dashed bounding box
         self.canvas.create_rectangle(cx1, cy1, cx2, cy2,
-            outline="#89b4fa", width=1.5, dash=(5, 3), tags="handle")
+            outline=self.c_handle_fill, width=1.5, dash=(5, 3), tags="handle")
 
         # Corner handles (small filled squares)
         hs = 5
@@ -493,7 +556,7 @@ class CertificateApp(tk.Tk):
         ]
         for x, y in corners:
             self.canvas.create_rectangle(x - hs, y - hs, x + hs, y + hs,
-                fill="#89b4fa", outline="#cdd6f4", width=1, tags=("handle", "h_corner"))
+                fill=self.c_handle_fill, outline=self.c_handle_outline, width=1, tags=("handle", "h_corner"))
 
         # Edge midpoint handles (smaller)
         ms = 4
@@ -501,18 +564,18 @@ class CertificateApp(tk.Tk):
         mid_y = (cy1 + cy2) / 2
         for x, y in [(mid_x, cy1), (mid_x, cy2), (cx1, mid_y), (cx2, mid_y)]:
             self.canvas.create_rectangle(x - ms, y - ms, x + ms, y + ms,
-                fill="#89b4fa", outline="#cdd6f4", width=1, tags=("handle", "h_corner"))
+                fill=self.c_handle_fill, outline=self.c_handle_outline, width=1, tags=("handle", "h_corner"))
 
         # Rotation handle (circle above top center, connected by a line)
         rot_line_len = 28
         rot_y = cy1 - rot_line_len
         # Connecting line
         self.canvas.create_line(mid_x, cy1, mid_x, rot_y,
-            fill="#89b4fa", width=1.5, tags="handle")
+            fill=self.c_handle_fill, width=1.5, tags="handle")
         # Circle
         rs = 7
         self.canvas.create_oval(mid_x - rs, rot_y - rs, mid_x + rs, rot_y + rs,
-            fill="#1e1e2e", outline="#89b4fa", width=2, tags=("handle", "h_rotate"))
+            fill=self.c_bg, outline=self.c_handle_fill, width=2, tags=("handle", "h_rotate"))
 
     # ─── Handle Interaction ───────────────────────────────────
 
@@ -722,12 +785,12 @@ class CertificateApp(tk.Tk):
             self.after_cancel(self._render_after_id)
             del self._render_after_id
 
-        if elapsed >= 0.04:  # ~25fps
+        if elapsed >= 0.016:  # ~60fps
             self._last_render_time = now
             self.render_preview()
         else:
             # Schedule for remaining time
-            delay = int((0.04 - elapsed) * 1000)
+            delay = int((0.016 - elapsed) * 1000)
             self._render_after_id = self.after(delay, self._do_deferred_render)
 
     def _do_deferred_render(self):
@@ -1016,8 +1079,8 @@ class CertificateApp(tk.Tk):
             self.canvas.create_text(
                 self.canvas.winfo_width() // 2,
                 self.canvas.winfo_height() // 2,
-                text="Select a template PDF to preview",
-                fill="#6c7086", font=("Inter", 12)
+                text=self._("sel_tpl"),
+                fill=self.c_text_inactive, font=("Inter", 12)
             )
             return
 
@@ -1031,8 +1094,8 @@ class CertificateApp(tk.Tk):
             self.canvas.create_text(
                 self.canvas.winfo_width() // 2,
                 self.canvas.winfo_height() // 2,
-                text="Cannot render preview\n(check template and font paths)",
-                fill="#f38ba8", font=("Inter", 11)
+                text=self._("fail_render"),
+                fill=self.c_error, font=("Inter", 11)
             )
             return
 
@@ -1096,12 +1159,12 @@ class CertificateApp(tk.Tk):
         if index >= len(self.names):
             self.generating = False
             self.gen_btn.config(state="normal")
-            self.status_label.config(text=f"Done! {len(self.names)} certificates generated.")
+            self.status_label.config(text=self._("done_gen").format(count=len(self.names)))
             messagebox.showinfo("Complete", f"All {len(self.names)} certificates have been generated!")
             return
 
         name = self.names[index]
-        self.status_label.config(text=f"Generating: {name}  ({index + 1}/{len(self.names)})")
+        self.status_label.config(text=self._("gen_msg").format(name=name, idx=index+1, total=len(self.names)))
         self.progress_var.set(index + 1)
 
         try:
@@ -1170,7 +1233,7 @@ class CertificateApp(tk.Tk):
         try:
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(settings, f, indent=4, ensure_ascii=False)
-            self.status_label.config(text=f"Settings saved to {os.path.basename(path)}")
+            self.status_label.config(text=self._("sav_msg").format(path=os.path.basename(path)))
         except Exception as e:
             messagebox.showerror("Error", f"Failed to save settings:\n{e}")
 
@@ -1232,79 +1295,10 @@ class CertificateApp(tk.Tk):
         if self.excel_var.get():
             self.load_excel()
 
-        self.status_label.config(text=f"Settings imported from {os.path.basename(path)}")
+        self.status_label.config(text=self._("imp_msg").format(path=os.path.basename(path)))
         self.render_preview()
 
     # ─── Tutorial Overlay ─────────────────────────────────────
-
-    _tutorial_steps = [
-        {
-            "title": "Welcome! 👋",
-            "text": "This is the Certificate Generator.\n\n"
-                    "It reads names from an Excel file and\n"
-                    "renders them onto a PDF template to\n"
-                    "create personalized certificates."
-        },
-        {
-            "title": "1. Load Files 📁",
-            "text": "Start by loading your files in the\n"
-                    "FILES section on the left panel:\n\n"
-                    "• Template PDF — your certificate design\n"
-                    "• Excel File — list of names\n"
-                    "• Output Dir — where certificates are saved\n\n"
-                    "Files in the app folder are auto-detected."
-        },
-        {
-            "title": "2. Choose Font 🔤",
-            "text": "Under FONT, pick your text font:\n\n"
-                    "• Font File — browse for a .ttf / .otf file\n"
-                    "• System Font — pick from installed fonts\n\n"
-                    "Toggle between the two with the\n"
-                    "radio buttons."
-        },
-        {
-            "title": "3. Text Options ✏️",
-            "text": "Adjust how the name appears:\n\n"
-                    "• Font Size, Text Y, X Offset\n"
-                    "• Line Spacing (for multi-line names)\n"
-                    "• Rotation (with optional 15° snap)\n"
-                    "• Color picker\n\n"
-                    "All changes update the preview live."
-        },
-        {
-            "title": "4. Interactive Preview 🖱️",
-            "text": "Click on the text in the preview to\n"
-                    "activate selection handles:\n\n"
-                    "• Drag the text to reposition\n"
-                    "• Drag corner handles to resize\n"
-                    "• Drag the top circle to rotate\n\n"
-                    "Click outside the box to deactivate.\n"
-                    "Use ← → arrow keys to browse names."
-        },
-        {
-            "title": "5. Alignment & Splitting 📐",
-            "text": "• ALIGNMENT — Left / Center / Right\n\n"
-                    "• TEXT SPLITTING modes:\n"
-                    "  Auto — splits long names (≥ threshold)\n"
-                    "  No Split — always single line\n"
-                    "  Always — always first + last name\n"
-        },
-        {
-            "title": "6. Generate & Export 🚀",
-            "text": "Once you're happy with the preview:\n\n"
-                    "• Click \"Generate All\" to batch-create\n"
-                    "  all certificates as PDFs\n\n"
-                    "• Use Save / Import to store your\n"
-                    "  settings as a JSON file for reuse."
-        },
-        {
-            "title": "You're all set! ✅",
-            "text": "That's everything you need to know.\n\n"
-                    "Click this \"?\" button anytime\n"
-                    "to see this tutorial again.\n\n"
-                    "Happy certificate making! 🎓"
-        },
-    ]
 
     _tutorial_index = 0
 
@@ -1316,16 +1310,17 @@ class CertificateApp(tk.Tk):
         # Remove previous overlay
         self.canvas.delete("tutorial")
 
-        if self._tutorial_index >= len(self._tutorial_steps):
+        if self._tutorial_index >= 8:
             return
 
-        step = self._tutorial_steps[self._tutorial_index]
+        title_text = self._(f"tut{self._tutorial_index + 1}_t")
+        body_text = self._(f"tut{self._tutorial_index + 1}_b")
         cw = self.canvas.winfo_width()
         ch = self.canvas.winfo_height()
 
         # Semi-transparent overlay (dark rectangle)
         self.canvas.create_rectangle(0, 0, cw, ch,
-            fill="#11111b", stipple="gray50", outline="", tags="tutorial")
+            fill=self.c_overlay, stipple="gray50", outline="", tags="tutorial")
 
         # Card background
         card_w = 360
@@ -1339,27 +1334,27 @@ class CertificateApp(tk.Tk):
 
         # Rounded card (approximate with rectangle)
         self.canvas.create_rectangle(x1, y1, x2, y2,
-            fill="#1e1e2e", outline="#89b4fa", width=2, tags="tutorial")
+            fill=self.c_bg, outline=self.c_accent, width=2, tags="tutorial")
 
         # Title
         self.canvas.create_text(cx, y1 + 30,
-            text=step["title"], fill="#89b4fa",
+            text=title_text, fill=self.c_accent,
             font=("Inter", 15, "bold"), tags="tutorial")
 
         # Body text
         self.canvas.create_text(cx, cy + 5,
-            text=step["text"], fill="#cdd6f4",
+            text=body_text, fill=self.c_fg,
             font=("Inter", 10), justify=tk.LEFT, width=card_w - 40, tags="tutorial")
 
         # Footer: step counter + click prompt
-        total = len(self._tutorial_steps)
+        total = 8
         idx = self._tutorial_index + 1
         if idx < total:
             footer = f"Step {idx}/{total}  —  Click to continue"
         else:
             footer = f"Step {idx}/{total}  —  Click to close"
         self.canvas.create_text(cx, y2 - 20,
-            text=footer, fill="#6c7086",
+            text=footer, fill=self.c_text_inactive,
             font=("Inter", 9), tags="tutorial")
 
         # Bind click on overlay to advance
@@ -1367,10 +1362,55 @@ class CertificateApp(tk.Tk):
 
     def _tutorial_next(self, event):
         self._tutorial_index += 1
-        if self._tutorial_index >= len(self._tutorial_steps):
+        if self._tutorial_index >= 8:
             self.canvas.delete("tutorial")
         else:
             self._show_tutorial_step()
+
+    # ─── Language & Theme Toggle ──────────────────────────────
+
+    def toggle_theme(self):
+        self.theme = "light" if self.theme == "dark" else "dark"
+        self._configure_styles()
+        self._apply_theme()
+
+    def toggle_lang(self):
+        self._lang = "tr" if self._lang == "en" else "en"
+        self._update_lang_btn_text()
+        self._apply_strings()
+        
+    def _update_lang_btn_text(self):
+        self.lang_btn.config(text="EN" if self._lang == "en" else "TR")
+
+    def _apply_strings(self):
+        self.title(self._("title"))
+        for widget, key, is_text in self._lang_widgets:
+            if is_text:
+                widget.config(text=self._(key))
+        
+        self.system_font_combo.set(self.system_font_var.get())
+        if self.canvas.find_withtag("tutorial"):
+            self._show_tutorial_step()
+        self.render_preview()
+
+    def _apply_theme(self):
+        self.configure(bg=self.c_bg)
+        self._settings_canvas.configure(bg=self.c_bg)
+        self.canvas.configure(bg=self.c_canvas_bg)
+
+        self.help_btn.config(bg=self.c_btn_bg, fg=self.c_fg,
+                             activebackground=self.c_btn_active, activeforeground=self.c_fg)
+
+        self.theme_btn.config(text="☀️" if self.theme == "dark" else "🌙",
+                              bg=self.c_btn_bg, fg=self.c_fg,
+                              activebackground=self.c_btn_active, activeforeground=self.c_fg)
+
+        self.color_swatch.config(highlightbackground=self.c_btn_active)
+
+        if self.canvas.find_withtag("tutorial"):
+            self._show_tutorial_step()
+
+        self.render_preview()
 
 
 if __name__ == "__main__":

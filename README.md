@@ -1,0 +1,59 @@
+# Certificate Generator
+
+A Python desktop application for batch-generating personalized PDF certificates from a template and a list of names. It features a live, interactive preview that allows precise visual placement, scaling, and rotation of text directly on the template.
+
+## Requirements
+
+The application requires Python 3 and a display server (X11/Wayland). 
+
+Dependencies:
+- `PyMuPDF` (fitz)
+- `pandas`
+- `openpyxl` (for reading .xlsx files)
+- `Pillow`
+
+Install the Python dependencies using pip:
+```bash
+pip install -r requirements.txt
+```
+*(Note: system `tk` libraries are also required, which are usually pre-installed on most desktop Linux environments, or available via `sudo apt install python3-tk` or `sudo pacman -S tk` in Arch Linux).*
+
+## Features
+
+- **Interactive Preview**: Select the text bounding box in the preview to move, resize, and rotate text directly using the mouse.
+- **Batch Export**: Generates individual PDF files for every row in a selected Excel column.
+- **Custom Font Support**: Load custom `.otf` or `.ttf` files, or select from installed system fonts.
+- **Text Splitting Logic**: Automatically splits long names into multiple lines based on configurable word counts and character thresholds.
+- **Configuration Profiles**: Save and load styling and file path configurations as JSON files.
+
+## Usage
+
+Run the application:
+```bash
+python3 app.py
+```
+
+### 1. File Configuration
+- **Template PDF**: The blank background certificate design.
+- **Excel File**: A spreadsheet containing the names of the recipients.
+- **Output Dir**: The folder where the generated PDFs will be saved.
+
+### 2. Styling Text
+- Select your target font either from a local file or the system font dropdown.
+- Adjust values using the spinboxes or use the interactive preview.
+- To use the interactive preview: click inside the dotted bounding box to activate handles. Drag the center to move, drag corners to resize, and drag the top handle to rotate. Click outside the box to deactivate.
+- Hold Shift while rotating to snap to 15-degree increments.
+
+### 3. Data Association
+- Select the exact column from the Excel file that contains the names.
+- Use the left/right arrow keys or the Next/Prev buttons below the preview to cycle through names and preview edge-cases (e.g., extremely long names).
+
+### 4. Text Splitting
+If names are too wide for the template, configure the split thresholds:
+- **Auto**: Splits names exceeding the character threshold into two lines.
+- **Always**: Forces multi-word names to split into two lines.
+- **No Split**: Forces names to stay on a single line regardless of length.
+
+### 5. Export
+- Click "Generate All" to process the entire Excel list. The application will output standard PDF files corresponding to each name in the designated output directory.
+- Click "Save" in the Settings panel to export the current configuration (files, positions, sizes, and colors) to a JSON file.
