@@ -36,7 +36,7 @@ python --version
 
 ```bash
 git clone https://github.com/Jopseps/Auto-Certificate-Generator
-cd ./Auto-Certificate-Generator
+cd Auto-Certificate-Generator
 ```
 
 Or download the ZIP file and extract it.
@@ -63,12 +63,12 @@ python -m pip install -r requirements.txt
 
 #### Linux
 ```bash
-python3 app.py
+python3 AutoCert.py
 ```
 
 #### Windows
 ```cmd
-python app.py
+python AutoCert.py
 ```
 
 The application window should open with the certificate generator interface.
@@ -112,7 +112,7 @@ The project automatically installs the following packages:
 
 Run the application:
 ```bash
-python3 app.py
+python3 AutoCert.py
 ```
 
 ### 1. File Configuration
