@@ -2,21 +2,103 @@
 
 A Python desktop application for batch-generating personalized PDF certificates from a template and a list of names. It features a live, interactive preview that allows precise visual placement, scaling, and rotation of text directly on the template.
 
-## Requirements
+## Installation Guide
 
-The application requires Python 3 and a display server (X11/Wayland). 
+### Prerequisites
 
-Dependencies:
-- `PyMuPDF` (fitz)
-- `pandas`
-- `openpyxl` (for reading .xlsx files)
-- `Pillow`
+- **Python 3.7 or later**
+- A display server (X11/Wayland on Linux, built-in on Windows/macOS)
 
-Install the Python dependencies using pip:
+### Step 1: Install Python
+
+#### Linux
+Most Linux distributions come with Python 3 pre-installed. Verify by running:
 ```bash
-pip install -r requirements.txt
+python3 --version
 ```
-*(Note: system `tk` libraries are also required, which are usually pre-installed on most desktop Linux environments, or available via `sudo apt install python3-tk` or `sudo pacman -S tk` in Arch Linux).*
+
+If Python is not installed:
+- **Ubuntu/Debian**: `sudo apt install python3 python3-pip python3-tk`
+- **Fedora/RHEL**: `sudo dnf install python3 python3-pip python3-tkinter`
+- **Arch Linux**: `sudo pacman -S python python-pip tk`
+
+#### Windows
+1. Download Python from [python.org](https://www.python.org/downloads/)
+2. Run the installer
+3. **Important**: Check the box "Add Python to PATH" during installation
+4. Click "Install Now"
+5. Verify installation by opening Command Prompt and running:
+```cmd
+python --version
+```
+
+### Step 2: Clone or Download the Project
+
+```bash
+git clone <repository-url>
+cd <project-directory>
+```
+
+Or download the ZIP file and extract it.
+
+### Step 3: Install Python Dependencies
+
+#### Linux
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+If you encounter permission issues, use:
+```bash
+python3 -m pip install --user -r requirements.txt
+```
+
+#### Windows
+Open Command Prompt in the project folder and run:
+```cmd
+python -m pip install -r requirements.txt
+```
+
+### Step 4: Verify Installation
+
+#### Linux
+```bash
+python3 app.py
+```
+
+#### Windows
+```cmd
+python app.py
+```
+
+The application window should open with the certificate generator interface.
+
+### Dependencies
+
+The project automatically installs the following packages:
+- `PyMuPDF` (fitz) - PDF manipulation
+- `pandas` - Excel data handling
+- `openpyxl` - Reading .xlsx files
+- `Pillow` - Image processing
+- `tkinter` - GUI (system library, pre-installed on most systems)
+
+### Troubleshooting
+
+**"Python not found" on Windows**
+- Restart your terminal or computer after installation
+- Verify Python was added to PATH: Open Command Prompt and type `python --version`
+
+**"tkinter not found" on Linux**
+- Ubuntu/Debian: `sudo apt install python3-tk`
+- Fedora/RHEL: `sudo dnf install python3-tkinter`
+- Arch Linux: `sudo pacman -S tk`
+
+**Permission denied on Linux**
+- Use `python3 -m pip install --user -r requirements.txt` instead
+
+**"Module not found" errors**
+- Ensure you've run the pip install command in the correct directory
+- Try: `python3 -m pip install --upgrade pip` then reinstall requirements
 
 ## Features
 
