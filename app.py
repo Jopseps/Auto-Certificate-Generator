@@ -14,11 +14,13 @@ import locale
 TRANSLATIONS = {
     "en": {
         "title": "Certificate Generator", "settings": "⚙  Settings", "files": "FILES", "tpl_pdf": "Template PDF", "excel": "Excel File", "out_dir": "Output Dir", "font": "FONT", "font_file": "Font File", "sys_font": "System Font", "file": "File", "family": "Family", "text_ops": "TEXT OPTIONS", "font_size": "Font Size", "text_y": "Text Y", "x_off": "X Offset", "line_sp": "Line Space", "rot": "Rotation °", "snap": "Snap to 15°", "color": "Color", "align": "ALIGNMENT", "a_left": "Left", "a_center": "Center", "a_right": "Right", "split": "TEXT SPLITTING", "s_auto": "Auto", "s_none": "No Split", "s_always": "Always", "s_thresh": "Threshold", "data": "DATA", "name_col": "Name Col", "gen_all": "▶  Generate All", "ready": "Ready", "settings_hdr": "EXTRAS", "save": "💾 Save", "import": "📂 Import", "preview_hdr": "📄  Certificate Preview", "prev": "◀  Prev", "next": "Next  ▶", "no_data": "No data loaded", "sel_tpl": "Select a template PDF to preview", "fail_render": "Cannot render preview\n(check template and font paths)", "done_gen": "Done! {count} certificates generated.", "gen_msg": "Generating: {name}  ({idx}/{total})", "sav_msg": "Settings saved to {path}", "imp_msg": "Settings imported from {path}",
-        "tut1_t": "Welcome! 👋", "tut1_b": "This is the Certificate Generator.\n\nIt reads names from an Excel file and\nrenders them onto a PDF template to\ncreate personalized certificates.", "tut2_t": "1. Load Files 📁", "tut2_b": "Start by loading your files in the\nFILES section on the left panel:\n\n• Template PDF — your certificate design\n• Excel File — list of names\n• Output Dir — where certificates are saved\n\nFiles in the app folder are auto-detected.", "tut3_t": "2. Choose Font 🔤", "tut3_b": "Under FONT, pick your text font:\n\n• Font File — browse for a .ttf / .otf file\n• System Font — pick from installed fonts\n\nToggle between the two with the\nradio buttons.", "tut4_t": "3. Text Options ✏️", "tut4_b": "Adjust how the name appears:\n\n• Font Size, Text Y, X Offset\n• Line Spacing (for multi-line names)\n• Rotation (with optional 15° snap)\n• Color picker\n\nAll changes update the preview live.", "tut5_t": "4. Interactive Preview 🖱️", "tut5_b": "Click on the text in the preview to\nactivate selection handles:\n\n• Drag the text to reposition\n• Drag corner handles to resize\n• Drag the top circle to rotate\n\nClick outside the box to deactivate.\nUse ← → arrow keys to browse names.", "tut6_t": "5. Alignment & Splitting 📐", "tut6_b": "• ALIGNMENT — Left / Center / Right\n\n• TEXT SPLITTING modes:\n  Auto — splits long names (≥ threshold)\n  No Split — always single line\n  Always — always first + last name\n", "tut7_t": "6. Generate & Export 🚀", "tut7_b": "Once you're happy with the preview:\n\n• Click \"Generate All\" to batch-create\n  all certificates as PDFs\n\n• Use Save / Import to store your\n  settings as a JSON file for reuse.", "tut8_t": "You're all set! ✅", "tut8_b": "That's everything you need to know.\n\nClick this \"?\" button anytime\nto see this tutorial again.\n\nHappy certificate making! 🎓",
+        "tut1_t": "Welcome! 👋", "tut1_b": "This is the Certificate Generator.\n\nIt reads names from an Excel file and\nrenders them onto a PDF template to\ncreate personalized certificates.", "tut2_t": "1. Load Files 📁", "tut2_b": "Start by loading your files in the\nFILES section on the left panel:\n\n• Template PDF — your certificate design\n• Excel File — list of names\n• Output Dir — where certificates are saved\n\nFiles in the app folder are auto-detected.", "tut3_t": "2. Choose Font 🔤", "tut3_b": "Under FONT, pick your text font:\n\n• Font File — browse for a .ttf / .otf file\n• System Font — pick from installed fonts\n\nToggle between the two with the\nradio buttons.", "tut4_t": "3. Text Options ✏️", "tut4_b": "Adjust how the name appears:\n\n• Font Size, Text Y, X Offset\n• Line Spacing (for multi-line names)\n• Rotation (with optional 15° snap)\n• Color picker\n\nAll changes update the preview live.", "tut5_t": "4. Interactive Preview 🖱️", "tut5_b": "Click on the text in the preview to\nactivate selection handles:\n\n• Drag the text to position, or rotate it.\n• Arrow Keys nudge text 1px (5px with Shift)\n• Press Ctrl+Z to Undo and Ctrl+Shift+Z to Redo\n\nClick outside the box to deactivate.\nUse ← → arrow keys to browse names.", "tut6_t": "5. Alignment & Splitting 📐", "tut6_b": "• ALIGNMENT — Left / Center / Right\n\n• TEXT SPLITTING modes:\n  Auto — splits long names (≥ threshold)\n  No Split — always single line\n  Always — always first + last name\n", "tut7_t": "6. Generate & Export 🚀", "tut7_b": "Once you're happy with the preview:\n\n• Click \"Generate All\" to batch-create\n  all certificates as PDFs\n\n• Use Save / Import to store your\n  settings as a JSON file for reuse.", "tut8_t": "You're all set! ✅", "tut8_b": "That's everything you need to know.\n\nClick this \"?\" button anytime\nto see this tutorial again.\n\nHappy certificate making! 🎓",
+        "tut_step": "Step", "tut_cont": "Click to continue", "tut_close": "Click to close"
     },
     "tr": {
-        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Excel Dosyası", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Dosya Ekle", "sys_font": "Sistem Fontu", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluk", "rot": "Dönme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "gen_all": "▶  Hepsini Çıkar", "ready": "Hazır", "settings_hdr": "EKSTRALAR", "save": "💾 Kaydet", "import": "📂 Kopyala", "preview_hdr": "📄  Sertifika Önizleme", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yok", "sel_tpl": "Önizleme için PDF şablonu seçin", "fail_render": "Önizleme çalışamadı\n(şablon/font yollarını kontrol ediniz)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Üretiliyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path}'e kaydedildi", "imp_msg": "Ayarlar {path}'den içe aktarıldı",
-        "tut1_t": "Hoşgeldiniz! 👋", "tut1_b": "Bu, Sertifika Oluşturucusu'dur.\n\nBir Excel dosyasından isimleri okur ve\nkişiselleştirilmiş sertifikalar oluşturmak\niçin bunları şablonun üzerine yazar.", "tut2_t": "1. Dosyaları Yükle 📁", "tut2_b": "Sol paneldeki DOSYALAR menüsünden\ndosyalarınızı yükleyerek başlayın:\n\n• Şablon PDF — sertifika tasarımınız\n• Excel Dosyası — isimlendirme\n• Çıktı Klasörü — kaydedileceği konum\n\nDizin içindeki dosyalar otomatik bulunur.", "tut3_t": "2. Font Seçimi 🔤", "tut3_b": "YAZI TİPİ altından fontunuzu seçin:\n\n• Dışarıdan — bir .ttf/.otf dosyası\n• Sistem Fontu — yüklü fontlardan biri\n\nDüğmeler ile iki format arasında\ngeçiş yapabilirsiniz.", "tut4_t": "3. Metin Ayarları ✏️", "tut4_b": "Yazının duruşunu konfigüre edin:\n\n• Yazı Boyutu, Y, X Ofseti\n• Satır Boşluk (çok satırlı olanlar için)\n• Dönme (isteğe bağlı 15° yaslama)\n• Renk seçici\n\nDeğişiklikler anlık görünür.", "tut5_t": "4. Etkileşimli Önizleme 🖱️", "tut5_b": "Kontrolleri görmek için önizlemedeki\nmetne doğrudan tıklayın:\n\n• Konumlandırmak için sürükleyin\n• Boyutunu ayarlamak için köşeye\n• Döndürmek için tepeye sürükleyin\n\nOk tuşlarıyla isimleri ← → gezin.", "tut6_t": "5. Hizalama & Bölme 📐", "tut6_b": "• HİZALAMA — Sol / Orta / Sağ\n\n• METİN BÖLME modları:\n  Oto — uzunları (≥ eşik) zorla böler\n  Bölme — her zaman tek satır tutar\n  Her Zaman — her zaman isim + soyisim\n", "tut7_t": "6. Dışa Aktarım 🚀", "tut7_b": "Memnun kaldığınızda:\n\n• Bütün sertifikaları PDF yazdırmak\n  için \"Hepsini Çıkar\"a tıklayın\n\n• Tüm projenizin ayarlarını JSON'a\n  Kaydet / İçe Aktar yapabilirsiniz.", "tut8_t": "Her Şey Hazır! ✅", "tut8_b": "Bilmeniz gereken tek detay buydu.\n\nİstediğiniz bir zaman sağ üstteki \"?\"\nbutonuna tıklayarak tekrar okuyun.\n\nİyi sertifikalamalar! 🎓",
+        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Excel Dosyası", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Yazı Tipi Dosyası", "sys_font": "Sistem Yazı Tipi", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluğu", "rot": "Döndürme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme Yok", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "gen_all": "▶  Tümünü Oluştur", "ready": "Hazır", "settings_hdr": "EKSTRALAR", "save": "💾 Kaydet", "import": "📂 İçe Aktar", "preview_hdr": "📄  Sertifika Önizlemesi", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yüklenmedi", "sel_tpl": "Önizleme için bir şablon PDF seçin", "fail_render": "Önizleme oluşturulamadı\n(şablon ve font yollarını kontrol edin)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Oluşturuluyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path} konumuna kaydedildi", "imp_msg": "Ayarlar {path} konumundan içe aktarıldı",
+        "tut1_t": "Hoş Geldiniz! 👋", "tut1_b": "Sertifika Oluşturucu'ya hoş geldiniz.\n\nBir Excel dosyasından isimleri okur ve\nkişiselleştirilmiş sertifikalar oluşturmak\niçin bunları şablonun üzerine yazar.", "tut2_t": "1. Dosyaları Yükle 📁", "tut2_b": "Sol paneldeki DOSYALAR menüsünden\ndosyalarınızı yükleyerek başlayın:\n\n• Şablon PDF — sertifika tasarımınız\n• Excel Dosyası — isim listesi\n• Çıktı Klasörü — kaydedileceği konum\n\nKlasördeki dosyalar otomatik bulunur.", "tut3_t": "2. Yazı Tipi Seçimi 🔤", "tut3_b": "YAZI TİPİ altından fontunuzu seçin:\n\n• Yazı Tipi Dosyası — bir .ttf/.otf dosyası\n• Sistem Yazı Tipi — yüklü fontlardan biri\n\nDüğmeler ile iki format arasında\ngeçiş yapabilirsiniz.", "tut4_t": "3. Metin Ayarları ✏️", "tut4_b": "Yazının duruşunu yapılandırın:\n\n• Yazı Boyutu, Y, X Ofseti\n• Satır Boşluğu (çok satırlı isimler için)\n• Döndürme (isteğe bağlı 15° yaslama)\n• Renk seçici\n\nDeğişiklikler anında önizlemeyi günceller.", "tut5_t": "4. Etkileşimli Önizleme 🖱️", "tut5_b": "Kontrolleri görmek için önizlemedeki\nmetne doğrudan tıklayın:\n\n• Konumlandırmak veya döndürmek için sürükle\n• Yön Tuşları metni 1px kaydırır (Shift ile 5px)\n• Geri almak için Ctrl+Z (Yinelemek için Ctrl+Shift+Z)\n\nKapatmak için dışarıya tıklayın.\nİsimleri ← → ile gezin.", "tut6_t": "5. Hizalama & Bölme 📐", "tut6_b": "• HİZALAMA — Sol / Orta / Sağ\n\n• METİN BÖLME modları:\n  Otomatik — uzun isimleri (≥ eşik) böler\n  Bölme Yok — her zaman tek satırda tutar\n  Her Zaman — her zaman isim + soyisim\n", "tut7_t": "6. Dışa Aktarım 🚀", "tut7_b": "Önizlemeden memnun olduğunuzda:\n\n• Bütün sertifikaları PDF yazdırmak\n  için \"Tümünü Oluştur\"a tıklayın\n\n• Tüm projenizin ayarlarını JSON'a\n  Kaydet / İçe Aktar yapabilirsiniz.", "tut8_t": "Her Şey Hazır! ✅", "tut8_b": "Bilmeniz gerekenler bu kadar.\n\nİstediğiniz bir zaman sağ üstteki \"?\"\nbutonuna tıklayarak tekrar okuyun.\n\nİyi sertifikalamalar! 🎓",
+        "tut_step": "Adım", "tut_cont": "Devam etmek için tıklayın", "tut_close": "Kapatmak için tıklayın"
     }
 }
 
@@ -119,6 +121,11 @@ class CertificateApp(tk.Tk):
         self.bind("<Control-Shift-z>", self.redo)
 
         self._auto_detect_files()
+        self.bind_all("<Button-1>", self._on_global_click, add="+")
+        
+    def _on_global_click(self, event):
+        if not isinstance(event.widget, (ttk.Entry, ttk.Spinbox, tk.Entry, tk.Spinbox)):
+            self.focus_set()
         
     def _(self, key):
         return TRANSLATIONS.get(self._lang, TRANSLATIONS["en"]).get(key, key)
@@ -171,8 +178,8 @@ class CertificateApp(tk.Tk):
             self.c_error = "#d20f39"
             self.c_overlay = "#dce0e8"
             self.c_success = "#40a02b"
-            self.c_handle_fill = "#1e66f5"
-            self.c_handle_outline = "#eff1f5"
+            self.c_handle_fill = "#93b5fa"
+            self.c_handle_outline = "#78a3f9"
 
         self.style.configure("TFrame", background=self.c_bg)
         self.style.configure("TLabel", background=self.c_bg, foreground=self.c_fg, font=("Inter", 10))
@@ -181,7 +188,7 @@ class CertificateApp(tk.Tk):
         self.style.configure("TButton", background=self.c_btn_bg, foreground=self.c_fg, font=("Inter", 10), borderwidth=0, padding=6)
         self.style.map("TButton", background=[("active", self.c_btn_active)])
         self.style.configure("Accent.TButton", background=self.c_accent, foreground=self.c_bg, font=("Inter", 11, "bold"), padding=10)
-        self.style.map("Accent.TButton", background=[("active", self.c_bg)])
+        self.style.map("Accent.TButton", background=[("active", self.c_handle_outline)])
         self.style.configure("Nav.TButton", background=self.c_btn_bg, foreground=self.c_fg, font=("Inter", 10), padding=4)
         self.style.configure("TEntry", fieldbackground=self.c_entry_bg, foreground=self.c_fg, insertcolor=self.c_fg, borderwidth=0)
         self.style.configure("TSpinbox", fieldbackground=self.c_entry_bg, foreground=self.c_fg, insertcolor=self.c_fg, borderwidth=0, arrowcolor=self.c_fg)
@@ -339,7 +346,7 @@ class CertificateApp(tk.Tk):
         self.linespace_var = tk.StringVar(value="45")
         self._spin_row(inner, "line_sp", self.linespace_var, 0, 200, 1)
 
-        self.rotation_var = tk.StringVar(value="0")
+        self.rotation_var = tk.StringVar(value="0.0")
         self._spin_row(inner, "rot", self.rotation_var, -180, 180, 1)
 
         self.snap_rotation_var = tk.BooleanVar(value=False)
@@ -403,7 +410,6 @@ class CertificateApp(tk.Tk):
 
         self.progress_var = tk.IntVar(value=0)
         self.progress_bar = ttk.Progressbar(inner, variable=self.progress_var, maximum=100, style="green.Horizontal.TProgressbar")
-        self.progress_bar.pack(fill=tk.X, pady=(0, 4))
 
         self.status_label = self._add_l(ttk.Label(inner, font=("Inter", 9)), "ready")
         self.status_label.pack(anchor="w")
@@ -611,6 +617,10 @@ class CertificateApp(tk.Tk):
 
     def _on_hover(self, event):
         """Change cursor based on what's under the mouse."""
+        if self.canvas.find_withtag("tutorial"):
+            self.canvas.config(cursor="arrow")
+            return
+
         if self._text_bbox_canvas is None:
             self.canvas.config(cursor="arrow")
             return
@@ -654,6 +664,9 @@ class CertificateApp(tk.Tk):
 
     def _on_handle_press(self, event):
         """Determine interaction mode based on click location."""
+        if self.canvas.find_withtag("tutorial"):
+            return
+
         if self._text_bbox_canvas is None:
             self._interact_mode = INTERACT_NONE
             self._handles_active = False
@@ -753,6 +766,9 @@ class CertificateApp(tk.Tk):
 
     def _on_handle_motion(self, event):
         """Handle dragging for move/resize/rotate."""
+        if self.canvas.find_withtag("tutorial"):
+            return
+            
         if self._interact_mode == INTERACT_NONE:
             return
         if self._preview_scale <= 0:
@@ -797,6 +813,9 @@ class CertificateApp(tk.Tk):
 
     def _on_handle_release(self, event):
         """Finalize interaction — do a clean re-render."""
+        if self.canvas.find_withtag("tutorial"):
+            return
+            
         if self._interact_mode != INTERACT_NONE:
             self._interact_mode = INTERACT_NONE
             # Cancel any pending throttled render and do a clean one
@@ -1294,12 +1313,14 @@ class CertificateApp(tk.Tk):
         self.gen_btn.config(state="disabled")
         self.progress_var.set(0)
         self.progress_bar["maximum"] = len(self.names)
+        self.progress_bar.pack(fill=tk.X, pady=(0, 4), before=self.status_label)
         self._generate_step(0)
 
     def _generate_step(self, index):
         if index >= len(self.names):
             self.generating = False
             self.gen_btn.config(state="normal")
+            #Fself.progress_bar.pack_forget()
             self.status_label.config(text=self._("done_gen").format(count=len(self.names)))
             messagebox.showinfo("Complete", f"All {len(self.names)} certificates have been generated!")
             return
@@ -1491,9 +1512,9 @@ class CertificateApp(tk.Tk):
         total = 8
         idx = self._tutorial_index + 1
         if idx < total:
-            footer = f"Step {idx}/{total}  —  Click to continue"
+            footer = f"{self._('tut_step')} {idx}/{total}  —  {self._('tut_cont')}"
         else:
-            footer = f"Step {idx}/{total}  —  Click to close"
+            footer = f"{self._('tut_step')} {idx}/{total}  —  {self._('tut_close')}"
         self.canvas.create_text(cx, y2 - 20,
             text=footer, fill=self.c_text_inactive,
             font=("Inter", 9), tags="tutorial")

@@ -42,6 +42,8 @@ python3 app.py
 - Select your target font either from a local file or the system font dropdown.
 - Adjust values using the spinboxes or use the interactive preview.
 - To use the interactive preview: click inside the dotted bounding box to activate handles. Drag the center to move, drag corners to resize, and drag the top handle to rotate. Click outside the box to deactivate.
+- **Pro-tip:** While the handles are active, you can use the **Arrow Keys** to nudge the text exactly by 1px. Start holding **Shift** to nudge by 5px! 
+- **Pro-tip 2:** Use **Ctrl+Z** and **Ctrl+Shift+Z** to Undo and Redo your text manipulation anywhere.
 - Hold Shift while rotating to snap to 15-degree increments.
 
 ### 3. Data Association
