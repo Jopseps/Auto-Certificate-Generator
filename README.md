@@ -1,4 +1,4 @@
-# Certificate Generator
+# Auto Certificate Generator
 
 A Python desktop application for batch-generating personalized PDF certificates from a template and a list of names. It features a live, interactive preview that allows precise visual placement, scaling, and rotation of text directly on the template.
 
@@ -71,7 +71,7 @@ python3 AutoCert.py
 python AutoCert.py
 ```
 
-The application window should open with the certificate generator interface.
+The application window should open with the auto certificate generator interface.
 
 ### Dependencies
 
