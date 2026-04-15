@@ -35,8 +35,8 @@ python --version
 ### Step 2: Clone or Download the Project
 
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/Jopseps/Auto-Certificate-Generator
+cd ./Auto-Certificate-Generator
 ```
 
 Or download the ZIP file and extract it.
