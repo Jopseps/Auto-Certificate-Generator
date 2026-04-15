@@ -13,11 +13,11 @@ import locale
 
 TRANSLATIONS = {
     "en": {
-        "title": "Certificate Generator", "settings": "⚙  Settings", "files": "FILES", "tpl_pdf": "Template PDF", "excel": "Excel File", "out_dir": "Output Dir", "font": "FONT", "font_file": "Font File", "sys_font": "System Font", "file": "File", "family": "Family", "text_ops": "TEXT OPTIONS", "font_size": "Font Size", "text_y": "Text Y", "x_off": "X Offset", "line_sp": "Line Space", "rot": "Rotation °", "snap": "Snap to 15°", "color": "Color", "align": "ALIGNMENT", "a_left": "Left", "a_center": "Center", "a_right": "Right", "split": "TEXT SPLITTING", "s_auto": "Auto", "s_none": "No Split", "s_always": "Always", "s_thresh": "Threshold", "data": "DATA", "name_col": "Name Col", "gen_all": "▶  Generate All", "ready": "Ready", "settings_hdr": "SETTINGS", "save": "💾 Save", "import": "📂 Import", "preview_hdr": "📄  Certificate Preview", "prev": "◀  Prev", "next": "Next  ▶", "no_data": "No data loaded", "sel_tpl": "Select a template PDF to preview", "fail_render": "Cannot render preview\n(check template and font paths)", "done_gen": "Done! {count} certificates generated.", "gen_msg": "Generating: {name}  ({idx}/{total})", "sav_msg": "Settings saved to {path}", "imp_msg": "Settings imported from {path}",
+        "title": "Certificate Generator", "settings": "⚙  Settings", "files": "FILES", "tpl_pdf": "Template PDF", "excel": "Excel File", "out_dir": "Output Dir", "font": "FONT", "font_file": "Font File", "sys_font": "System Font", "file": "File", "family": "Family", "text_ops": "TEXT OPTIONS", "font_size": "Font Size", "text_y": "Text Y", "x_off": "X Offset", "line_sp": "Line Space", "rot": "Rotation °", "snap": "Snap to 15°", "color": "Color", "align": "ALIGNMENT", "a_left": "Left", "a_center": "Center", "a_right": "Right", "split": "TEXT SPLITTING", "s_auto": "Auto", "s_none": "No Split", "s_always": "Always", "s_thresh": "Threshold", "data": "DATA", "name_col": "Name Col", "gen_all": "▶  Generate All", "ready": "Ready", "settings_hdr": "EXTRAS", "save": "💾 Save", "import": "📂 Import", "preview_hdr": "📄  Certificate Preview", "prev": "◀  Prev", "next": "Next  ▶", "no_data": "No data loaded", "sel_tpl": "Select a template PDF to preview", "fail_render": "Cannot render preview\n(check template and font paths)", "done_gen": "Done! {count} certificates generated.", "gen_msg": "Generating: {name}  ({idx}/{total})", "sav_msg": "Settings saved to {path}", "imp_msg": "Settings imported from {path}",
         "tut1_t": "Welcome! 👋", "tut1_b": "This is the Certificate Generator.\n\nIt reads names from an Excel file and\nrenders them onto a PDF template to\ncreate personalized certificates.", "tut2_t": "1. Load Files 📁", "tut2_b": "Start by loading your files in the\nFILES section on the left panel:\n\n• Template PDF — your certificate design\n• Excel File — list of names\n• Output Dir — where certificates are saved\n\nFiles in the app folder are auto-detected.", "tut3_t": "2. Choose Font 🔤", "tut3_b": "Under FONT, pick your text font:\n\n• Font File — browse for a .ttf / .otf file\n• System Font — pick from installed fonts\n\nToggle between the two with the\nradio buttons.", "tut4_t": "3. Text Options ✏️", "tut4_b": "Adjust how the name appears:\n\n• Font Size, Text Y, X Offset\n• Line Spacing (for multi-line names)\n• Rotation (with optional 15° snap)\n• Color picker\n\nAll changes update the preview live.", "tut5_t": "4. Interactive Preview 🖱️", "tut5_b": "Click on the text in the preview to\nactivate selection handles:\n\n• Drag the text to reposition\n• Drag corner handles to resize\n• Drag the top circle to rotate\n\nClick outside the box to deactivate.\nUse ← → arrow keys to browse names.", "tut6_t": "5. Alignment & Splitting 📐", "tut6_b": "• ALIGNMENT — Left / Center / Right\n\n• TEXT SPLITTING modes:\n  Auto — splits long names (≥ threshold)\n  No Split — always single line\n  Always — always first + last name\n", "tut7_t": "6. Generate & Export 🚀", "tut7_b": "Once you're happy with the preview:\n\n• Click \"Generate All\" to batch-create\n  all certificates as PDFs\n\n• Use Save / Import to store your\n  settings as a JSON file for reuse.", "tut8_t": "You're all set! ✅", "tut8_b": "That's everything you need to know.\n\nClick this \"?\" button anytime\nto see this tutorial again.\n\nHappy certificate making! 🎓",
     },
     "tr": {
-        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Excel Dosyası", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Dosya Ekle", "sys_font": "Sistem Fontu", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluk", "rot": "Dönme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "gen_all": "▶  Hepsini Çıkar", "ready": "Hazır", "settings_hdr": "AYARLAR", "save": "💾 Kaydet", "import": "📂 Kopyala", "preview_hdr": "📄  Sertifika Önizleme", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yok", "sel_tpl": "Önizleme için PDF şablonu seçin", "fail_render": "Önizleme çalışamadı\n(şablon/font yollarını kontrol ediniz)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Üretiliyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path}'e kaydedildi", "imp_msg": "Ayarlar {path}'den içe aktarıldı",
+        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Excel Dosyası", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Dosya Ekle", "sys_font": "Sistem Fontu", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluk", "rot": "Dönme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "gen_all": "▶  Hepsini Çıkar", "ready": "Hazır", "settings_hdr": "EKSTRALAR", "save": "💾 Kaydet", "import": "📂 Kopyala", "preview_hdr": "📄  Sertifika Önizleme", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yok", "sel_tpl": "Önizleme için PDF şablonu seçin", "fail_render": "Önizleme çalışamadı\n(şablon/font yollarını kontrol ediniz)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Üretiliyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path}'e kaydedildi", "imp_msg": "Ayarlar {path}'den içe aktarıldı",
         "tut1_t": "Hoşgeldiniz! 👋", "tut1_b": "Bu, Sertifika Oluşturucusu'dur.\n\nBir Excel dosyasından isimleri okur ve\nkişiselleştirilmiş sertifikalar oluşturmak\niçin bunları şablonun üzerine yazar.", "tut2_t": "1. Dosyaları Yükle 📁", "tut2_b": "Sol paneldeki DOSYALAR menüsünden\ndosyalarınızı yükleyerek başlayın:\n\n• Şablon PDF — sertifika tasarımınız\n• Excel Dosyası — isimlendirme\n• Çıktı Klasörü — kaydedileceği konum\n\nDizin içindeki dosyalar otomatik bulunur.", "tut3_t": "2. Font Seçimi 🔤", "tut3_b": "YAZI TİPİ altından fontunuzu seçin:\n\n• Dışarıdan — bir .ttf/.otf dosyası\n• Sistem Fontu — yüklü fontlardan biri\n\nDüğmeler ile iki format arasında\ngeçiş yapabilirsiniz.", "tut4_t": "3. Metin Ayarları ✏️", "tut4_b": "Yazının duruşunu konfigüre edin:\n\n• Yazı Boyutu, Y, X Ofseti\n• Satır Boşluk (çok satırlı olanlar için)\n• Dönme (isteğe bağlı 15° yaslama)\n• Renk seçici\n\nDeğişiklikler anlık görünür.", "tut5_t": "4. Etkileşimli Önizleme 🖱️", "tut5_b": "Kontrolleri görmek için önizlemedeki\nmetne doğrudan tıklayın:\n\n• Konumlandırmak için sürükleyin\n• Boyutunu ayarlamak için köşeye\n• Döndürmek için tepeye sürükleyin\n\nOk tuşlarıyla isimleri ← → gezin.", "tut6_t": "5. Hizalama & Bölme 📐", "tut6_b": "• HİZALAMA — Sol / Orta / Sağ\n\n• METİN BÖLME modları:\n  Oto — uzunları (≥ eşik) zorla böler\n  Bölme — her zaman tek satır tutar\n  Her Zaman — her zaman isim + soyisim\n", "tut7_t": "6. Dışa Aktarım 🚀", "tut7_b": "Memnun kaldığınızda:\n\n• Bütün sertifikaları PDF yazdırmak\n  için \"Hepsini Çıkar\"a tıklayın\n\n• Tüm projenizin ayarlarını JSON'a\n  Kaydet / İçe Aktar yapabilirsiniz.", "tut8_t": "Her Şey Hazır! ✅", "tut8_b": "Bilmeniz gereken tek detay buydu.\n\nİstediğiniz bir zaman sağ üstteki \"?\"\nbutonuna tıklayarak tekrar okuyun.\n\nİyi sertifikalamalar! 🎓",
     }
 }
@@ -99,8 +99,24 @@ class CertificateApp(tk.Tk):
 
         self.build_ui()
 
-        self.bind("<Left>", lambda e: self.navigate(-1))
-        self.bind("<Right>", lambda e: self.navigate(1))
+        # Undo / Redo system
+        self._undo_stack = []
+        self._redo_stack = []
+        self._is_undoing = False
+        self._last_stable_snapshot = self._get_snapshot()
+
+        self.bind("<Left>", self._on_left_arrow)
+        self.bind("<Right>", self._on_right_arrow)
+        self.bind("<Up>", self._on_up_arrow)
+        self.bind("<Down>", self._on_down_arrow)
+        self.bind("<Shift-Left>", self._on_left_arrow)
+        self.bind("<Shift-Right>", self._on_right_arrow)
+        self.bind("<Shift-Up>", self._on_up_arrow)
+        self.bind("<Shift-Down>", self._on_down_arrow)
+        self.bind("<Control-z>", self.undo)
+        self.bind("<Control-Z>", self.redo)
+        self.bind("<Control-Shift-Z>", self.redo)
+        self.bind("<Control-Shift-z>", self.redo)
 
         self._auto_detect_files()
         
@@ -115,8 +131,11 @@ class CertificateApp(tk.Tk):
 
     def _detect_language(self):
         try:
-            lang = locale.getdefaultlocale()[0]
-            if lang and lang.startswith('tr'):
+            lang = locale.getlocale()[0]
+            if not lang:
+                import os
+                lang = os.environ.get('LANG', '')
+            if lang and lang.lower().startswith('tr'):
                 return "tr"
         except Exception:
             pass
@@ -173,6 +192,7 @@ class CertificateApp(tk.Tk):
         self.style.map("TRadiobutton", background=[("active", self.c_bg)])
         self.style.configure("TCheckbutton", background=self.c_bg, foreground=self.c_fg, font=("Inter", 9))
         self.style.map("TCheckbutton", background=[("active", self.c_bg)])
+        self.configure(bg=self.c_bg)
 
     def build_ui(self):
         # Top bar with buttons
@@ -189,12 +209,22 @@ class CertificateApp(tk.Tk):
             bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
             bd=0, width=3, height=1, cursor="hand2", command=self.toggle_theme)
         self.theme_btn.pack(side=tk.RIGHT, padx=(0, 6))
-
+    
         self.lang_btn = tk.Button(topbar, text="EN", font=("Inter", 10, "bold"),
             bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
-            bd=0, width=4, height=1, cursor="hand2", command=self.toggle_lang)
+            bd=0, width=3, height=1, cursor="hand2", command=self.toggle_lang)
         self.lang_btn.pack(side=tk.RIGHT, padx=(0, 6))
         self._update_lang_btn_text()
+
+        self.redo_btn = tk.Button(topbar, text="⟳", font=("Inter", 14, "bold"),
+            bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
+            bd=0, width=3, height=1, cursor="hand2", command=self.redo)
+        self.redo_btn.pack(side=tk.RIGHT, padx=(0, 21))
+
+        self.undo_btn = tk.Button(topbar, text="⟲", font=("Inter", 14, "bold"),
+            bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
+            bd=0, width=3, height=1, cursor="hand2", command=self.undo)
+        self.undo_btn.pack(side=tk.RIGHT, padx=(0, 6))
 
         main = ttk.Frame(self)
         main.pack(fill=tk.BOTH, expand=True, padx=12, pady=(4, 12))
@@ -943,6 +973,92 @@ class CertificateApp(tk.Tk):
         else:
             self.nav_label.config(text="No data loaded")
 
+    # ─── Keyboard Nudging & Undo/Redo ────────────────────────
+
+    def _on_left_arrow(self, event):
+        shift = bool(event.state & 0x0001)
+        if self._handles_active:
+            self._nudge_text(-5 if shift else -1, 0)
+        else:
+            self.navigate(-1)
+
+    def _on_right_arrow(self, event):
+        shift = bool(event.state & 0x0001)
+        if self._handles_active:
+            self._nudge_text(5 if shift else 1, 0)
+        else:
+            self.navigate(1)
+            
+    def _on_up_arrow(self, event):
+        shift = bool(event.state & 0x0001)
+        if self._handles_active:
+            self._nudge_text(0, -5 if shift else -1)
+            
+    def _on_down_arrow(self, event):
+        shift = bool(event.state & 0x0001)
+        if self._handles_active:
+            self._nudge_text(0, 5 if shift else 1)
+
+    def _nudge_text(self, dx, dy):
+        try:
+            if dx != 0:
+                curr_x = float(self.xoffset_var.get())
+                self.xoffset_var.set(f"{curr_x + dx:.0f}")
+            if dy != 0:
+                curr_y = float(self.texty_var.get())
+                self.texty_var.set(f"{curr_y + dy:.0f}")
+        except ValueError:
+            pass
+
+    def _get_snapshot(self):
+        try:
+            return {
+                "font_size": self.fontsize_var.get(),
+                "text_y": self.texty_var.get(),
+                "x_offset": self.xoffset_var.get(),
+                "line_spacing": self.linespace_var.get(),
+                "rotation": self.rotation_var.get()
+            }
+        except Exception:
+            return None
+
+    def _apply_snapshot(self, snap):
+        if not snap: return
+        self._is_undoing = True
+        self.fontsize_var.set(snap["font_size"])
+        self.texty_var.set(snap["text_y"])
+        self.xoffset_var.set(snap["x_offset"])
+        self.linespace_var.set(snap["line_spacing"])
+        self.rotation_var.set(snap["rotation"])
+        self._is_undoing = False
+        self.render_preview()
+        self._last_stable_snapshot = self._get_snapshot()
+
+    def _push_undo(self, snapshot):
+        if not snapshot: return
+        if self._undo_stack and self._undo_stack[-1] == snapshot:
+            return
+        self._undo_stack.append(snapshot)
+        if len(self._undo_stack) > 50:
+            self._undo_stack.pop(0)
+        self._redo_stack.clear()
+
+    def undo(self, event=None):
+        if not self._undo_stack:
+            return
+        curr_snap = self._get_snapshot()
+        prev_snap = self._undo_stack.pop()
+        self._redo_stack.append(curr_snap)
+        self._apply_snapshot(prev_snap)
+
+    def redo(self, event=None):
+        if not self._redo_stack:
+            return
+        curr_snap = self._get_snapshot()
+        next_snap = self._redo_stack.pop()
+        self._undo_stack.append(curr_snap)
+        self._apply_snapshot(next_snap)
+
     # ─── Setting Change ──────────────────────────────────────
 
     def _on_snap_rotation_toggle(self):
@@ -957,9 +1073,34 @@ class CertificateApp(tk.Tk):
         self._on_setting_change()
 
     def _on_setting_change(self):
+        if getattr(self, "_is_undoing", False):
+            return
+            
+        # Capture pre-change snapshot
+        if not hasattr(self, "_setting_start_snapshot"):
+            self._setting_start_snapshot = getattr(self, "_last_stable_snapshot", self._get_snapshot())
+            
+        # Restart the commit timer
         if hasattr(self, "_setting_after_id"):
             self.after_cancel(self._setting_after_id)
-        self._setting_after_id = self.after(300, self.render_preview)
+        self._setting_after_id = self.after(400, self._finalize_setting_change)
+        
+        # Immediate visual feedback, throttled
+        current = time.time()
+        if not hasattr(self, "_last_render_time"): self._last_render_time = 0
+        if current - self._last_render_time >= 0.016:
+            self.render_preview()
+            self._last_render_time = time.time()
+
+    def _finalize_setting_change(self):
+        # One last render to ensure we didn't drop the final frame
+        self.render_preview()
+        curr = self._get_snapshot()
+        if hasattr(self, "_setting_start_snapshot"):
+            if curr and self._setting_start_snapshot != curr:
+                self._push_undo(self._setting_start_snapshot)
+            del self._setting_start_snapshot
+        self._last_stable_snapshot = curr
 
     # ─── Text Splitting Logic ─────────────────────────────────
 
@@ -1398,8 +1539,9 @@ class CertificateApp(tk.Tk):
         self._settings_canvas.configure(bg=self.c_bg)
         self.canvas.configure(bg=self.c_canvas_bg)
 
-        self.help_btn.config(bg=self.c_btn_bg, fg=self.c_fg,
-                             activebackground=self.c_btn_active, activeforeground=self.c_fg)
+        for btn in (self.help_btn, self.lang_btn, self.undo_btn, self.redo_btn):
+            btn.config(bg=self.c_btn_bg, fg=self.c_fg,
+                       activebackground=self.c_btn_active, activeforeground=self.c_fg)
 
         self.theme_btn.config(text="☀️" if self.theme == "dark" else "🌙",
                               bg=self.c_btn_bg, fg=self.c_fg,
