@@ -305,7 +305,7 @@ class CertificateApp(tk.Tk):
         # --- Font options ---
         self._add_l(ttk.Label(inner, style="Section.TLabel"), "font").pack(anchor="w", pady=(0, 2))
 
-        self.font_source_var = tk.StringVar(value="file")
+        self.font_source_var = tk.StringVar(value="system")
         font_src_frame = ttk.Frame(inner)
         font_src_frame.pack(fill=tk.X, pady=1)
         self._add_l(ttk.Radiobutton(font_src_frame, variable=self.font_source_var, value="file", command=self._on_font_source_change), "font_file").pack(side=tk.LEFT, padx=(0, 12))
@@ -316,7 +316,6 @@ class CertificateApp(tk.Tk):
 
         self.font_var = tk.StringVar()
         self.font_file_frame = ttk.Frame(self.font_selector_container)
-        self.font_file_frame.pack(fill=tk.X)
         self._add_l(ttk.Label(self.font_file_frame, width=11), "file").pack(side=tk.LEFT)
         ttk.Entry(self.font_file_frame, textvariable=self.font_var, width=14).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 4))
         ttk.Button(self.font_file_frame, text="...", width=3, command=self._browse_font).pack(side=tk.LEFT)
@@ -325,9 +324,24 @@ class CertificateApp(tk.Tk):
         self.system_font_frame = ttk.Frame(self.font_selector_container)
         self._add_l(ttk.Label(self.system_font_frame, width=11), "family").pack(side=tk.LEFT)
         font_families = list(self.system_fonts.keys())
+        # Set default system font to Times New Roman or a basic fallback
+        if "Times New Roman" in font_families:
+            self.system_font_var.set("Times New Roman")
+        else:
+            basic_fonts = ["Liberation Serif", "DejaVu Serif", "Noto Serif", "Arial", "Liberation Sans"]
+            for font in basic_fonts:
+                if font in font_families:
+                    self.system_font_var.set(font)
+                    break
+            else:
+                if font_families:
+                    self.system_font_var.set(font_families[0])
         self.system_font_combo = ttk.Combobox(self.system_font_frame, textvariable=self.system_font_var, values=font_families, state="readonly", width=18)
         self.system_font_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.system_font_var.trace_add("write", lambda *_: self._on_setting_change())
+        
+        # Initialize with system font selected
+        self._on_font_source_change()
 
         ttk.Frame(inner, height=2).pack(fill=tk.X, pady=6)
 
@@ -1093,6 +1107,10 @@ class CertificateApp(tk.Tk):
 
     def _on_setting_change(self):
         if getattr(self, "_is_undoing", False):
+            return
+        
+        # Skip rendering if canvas doesn't exist yet (during initialization)
+        if not hasattr(self, "canvas"):
             return
             
         # Capture pre-change snapshot
