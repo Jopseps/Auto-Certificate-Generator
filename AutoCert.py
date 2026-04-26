@@ -122,11 +122,11 @@ class CertificateApp(tk.Tk):
 
         self._auto_detect_files()
         self.bind_all("<Button-1>", self._on_global_click, add="+")
-        
+
     def _on_global_click(self, event):
         if not isinstance(event.widget, (ttk.Entry, ttk.Spinbox, tk.Entry, tk.Spinbox)):
             self.focus_set()
-        
+
     def _(self, key):
         return TRANSLATIONS.get(self._lang, TRANSLATIONS["en"]).get(key, key)
 
@@ -216,7 +216,7 @@ class CertificateApp(tk.Tk):
             bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
             bd=0, width=3, height=1, cursor="hand2", command=self.toggle_theme)
         self.theme_btn.pack(side=tk.RIGHT, padx=(0, 6))
-    
+
         self.lang_btn = tk.Button(topbar, text="EN", font=("Inter", 10, "bold"),
             bg=self.c_btn_bg, fg=self.c_fg, activebackground=self.c_btn_active, activeforeground=self.c_fg,
             bd=0, width=3, height=1, cursor="hand2", command=self.toggle_lang)
@@ -339,7 +339,7 @@ class CertificateApp(tk.Tk):
         self.system_font_combo = ttk.Combobox(self.system_font_frame, textvariable=self.system_font_var, values=font_families, state="readonly", width=18)
         self.system_font_combo.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.system_font_var.trace_add("write", lambda *_: self._on_setting_change())
-        
+
         # Initialize with system font selected
         self._on_font_source_change()
 
@@ -787,7 +787,7 @@ class CertificateApp(tk.Tk):
         """Handle dragging for move/resize/rotate."""
         if self.canvas.find_withtag("tutorial"):
             return
-            
+
         if self._interact_mode == INTERACT_NONE:
             return
         if self._preview_scale <= 0:
@@ -834,7 +834,7 @@ class CertificateApp(tk.Tk):
         """Finalize interaction — do a clean re-render."""
         if self.canvas.find_withtag("tutorial"):
             return
-            
+
         if self._interact_mode != INTERACT_NONE:
             self._interact_mode = INTERACT_NONE
             # Cancel any pending throttled render and do a clean one
@@ -919,15 +919,11 @@ class CertificateApp(tk.Tk):
         if os.path.exists(template):
             self.template_var.set(template)
 
-        excel = os.path.join(base, "ROTALIST.xlsx")
+        excel = os.path.join(base, "List.xlsx")
         if os.path.exists(excel):
             self.excel_var.set(excel)
 
-        font = os.path.join(base, "LibreBaskerville.ttf")
-        if os.path.exists(font):
-            self.font_var.set(font)
-
-        outdir = os.path.join(base, "sertifikalar")
+        outdir = os.path.join(base, "Output")
         self.outdir_var.set(outdir)
 
         if self.excel_var.get():
@@ -1034,12 +1030,12 @@ class CertificateApp(tk.Tk):
             self._nudge_text(5 if shift else 1, 0)
         else:
             self.navigate(1)
-            
+
     def _on_up_arrow(self, event):
         shift = bool(event.state & 0x0001)
         if self._handles_active:
             self._nudge_text(0, -5 if shift else -1)
-            
+
     def _on_down_arrow(self, event):
         shift = bool(event.state & 0x0001)
         if self._handles_active:
@@ -1125,20 +1121,20 @@ class CertificateApp(tk.Tk):
     def _on_setting_change(self):
         if getattr(self, "_is_undoing", False):
             return
-        
+
         # Skip rendering if canvas doesn't exist yet (during initialization)
         if not hasattr(self, "canvas"):
             return
-            
+
         # Capture pre-change snapshot
         if not hasattr(self, "_setting_start_snapshot"):
             self._setting_start_snapshot = getattr(self, "_last_stable_snapshot", self._get_snapshot())
-            
+
         # Restart the commit timer
         if hasattr(self, "_setting_after_id"):
             self.after_cancel(self._setting_after_id)
         self._setting_after_id = self.after(400, self._finalize_setting_change)
-        
+
         # Immediate visual feedback, throttled
         current = time.time()
         if not hasattr(self, "_last_render_time"): self._last_render_time = 0
@@ -1580,7 +1576,7 @@ class CertificateApp(tk.Tk):
         self._lang = "tr" if self._lang == "en" else "en"
         self._update_lang_btn_text()
         self._apply_strings()
-        
+
     def _update_lang_btn_text(self):
         self.lang_btn.config(text="EN" if self._lang == "en" else "TR")
 
@@ -1589,7 +1585,7 @@ class CertificateApp(tk.Tk):
         for widget, key, is_text in self._lang_widgets:
             if is_text:
                 widget.config(text=self._(key))
-        
+
         self.system_font_combo.set(self.system_font_var.get())
         if self.canvas.find_withtag("tutorial"):
             self._show_tutorial_step()
