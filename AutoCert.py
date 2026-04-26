@@ -13,13 +13,13 @@ import locale
 
 TRANSLATIONS = {
     "en": {
-        "title": "Certificate Generator", "settings": "⚙  Settings", "files": "FILES", "tpl_pdf": "Template PDF", "excel": "Excel File", "out_dir": "Output Dir", "font": "FONT", "font_file": "Font File", "sys_font": "System Font", "file": "File", "family": "Family", "text_ops": "TEXT OPTIONS", "font_size": "Font Size", "text_y": "Text Y", "x_off": "X Offset", "line_sp": "Line Space", "rot": "Rotation °", "snap": "Snap to 15°", "color": "Color", "align": "ALIGNMENT", "a_left": "Left", "a_center": "Center", "a_right": "Right", "split": "TEXT SPLITTING", "s_auto": "Auto", "s_none": "No Split", "s_always": "Always", "s_thresh": "Threshold", "data": "DATA", "name_col": "Name Col", "normalize": "Normalize", "gen_all": "▶  Generate All", "ready": "Ready", "settings_hdr": "EXTRAS", "save": "💾 Save", "import": "📂 Import", "preview_hdr": "📄  Certificate Preview", "prev": "◀  Prev", "next": "Next  ▶", "no_data": "No data loaded", "sel_tpl": "Select a template PDF to preview", "fail_render": "Cannot render preview\n(check template and font paths)", "done_gen": "Done! {count} certificates generated.", "gen_msg": "Generating: {name}  ({idx}/{total})", "sav_msg": "Settings saved to {path}", "imp_msg": "Settings imported from {path}",
-        "tut1_t": "Welcome! 👋", "tut1_b": "This is the Certificate Generator.\n\nIt reads names from an Excel file and\nrenders them onto a PDF template to\ncreate personalized certificates.", "tut2_t": "1. Load Files 📁", "tut2_b": "Start by loading your files in the\nFILES section on the left panel:\n\n• Template PDF — your certificate design\n• Excel File — list of names\n• Output Dir — where certificates are saved\n\nFiles in the app folder are auto-detected.", "tut3_t": "2. Choose Font 🔤", "tut3_b": "Under FONT, pick your text font:\n\n• Font File — browse for a .ttf / .otf file\n• System Font — pick from installed fonts\n\nToggle between the two with the\nradio buttons.", "tut4_t": "3. Text Options ✏️", "tut4_b": "Adjust how the name appears:\n\n• Font Size, Text Y, X Offset\n• Line Spacing (for multi-line names)\n• Rotation (with optional 15° snap)\n• Color picker\n\nAll changes update the preview live.", "tut5_t": "4. Interactive Preview 🖱️", "tut5_b": "Click on the text in the preview to\nactivate selection handles:\n\n• Drag the text to position, or rotate it.\n• Arrow Keys nudge text 1px (5px with Shift)\n• Press Ctrl+Z to Undo and Ctrl+Shift+Z to Redo\n\nClick outside the box to deactivate.\nUse ← → arrow keys to browse names.", "tut6_t": "5. Alignment & Splitting 📐", "tut6_b": "• ALIGNMENT — Left / Center / Right\n\n• TEXT SPLITTING modes:\n  Auto — splits long names (≥ threshold)\n  No Split — always single line\n  Always — always first + last name\n", "tut7_t": "6. Generate & Export 🚀", "tut7_b": "Once you're happy with the preview:\n\n• Click \"Generate All\" to batch-create\n  all certificates as PDFs\n\n• Use Save / Import to store your\n  settings as a JSON file for reuse.", "tut8_t": "You're all set! ✅", "tut8_b": "That's everything you need to know.\n\nClick this \"?\" button anytime\nto see this tutorial again.\n\nHappy certificate making! 🎓",
+        "title": "Certificate Generator", "settings": "⚙  Settings", "files": "FILES", "tpl_pdf": "Template PDF", "excel": "Data File (Excel/CSV)", "out_dir": "Output Dir", "font": "FONT", "font_file": "Font File", "sys_font": "System Font", "file": "File", "family": "Family", "text_ops": "TEXT OPTIONS", "font_size": "Font Size", "text_y": "Text Y", "x_off": "X Offset", "line_sp": "Line Space", "rot": "Rotation °", "snap": "Snap to 15°", "color": "Color", "align": "ALIGNMENT", "a_left": "Left", "a_center": "Center", "a_right": "Right", "split": "TEXT SPLITTING", "s_auto": "Auto", "s_none": "No Split", "s_always": "Always", "s_thresh": "Threshold", "data": "DATA", "name_col": "Name Col", "normalize": "Normalize", "gen_all": "▶  Generate All", "ready": "Ready", "settings_hdr": "EXTRAS", "save": "💾 Save", "import": "📂 Import", "preview_hdr": "📄  Certificate Preview", "prev": "◀  Prev", "next": "Next  ▶", "no_data": "No data loaded", "sel_tpl": "Select a template PDF to preview", "fail_render": "Cannot render preview\n(check template and font paths)", "done_gen": "Done! {count} certificates generated.", "gen_msg": "Generating: {name}  ({idx}/{total})", "sav_msg": "Settings saved to {path}", "imp_msg": "Settings imported from {path}",
+        "tut1_t": "Welcome! 👋", "tut1_b": "This is the Certificate Generator.\n\nIt reads names from an Excel or CSV file and\nrenders them onto a PDF template to\ncreate personalized certificates.", "tut2_t": "1. Load Files 📁", "tut2_b": "Start by loading your files in the\nFILES section on the left panel:\n\n• Template PDF — your certificate design\n• Data File — Excel or CSV file with names\n• Output Dir — where certificates are saved\n\nFiles in the app folder are auto-detected.", "tut3_t": "2. Choose Font 🔤", "tut3_b": "Under FONT, pick your text font:\n\n• Font File — browse for a .ttf / .otf file\n• System Font — pick from installed fonts\n\nToggle between the two with the\nradio buttons.", "tut4_t": "3. Text Options ✏️", "tut4_b": "Adjust how the name appears:\n\n• Font Size, Text Y, X Offset\n• Line Spacing (for multi-line names)\n• Rotation (with optional 15° snap)\n• Color picker\n\nAll changes update the preview live.", "tut5_t": "4. Interactive Preview 🖱️", "tut5_b": "Click on the text in the preview to\nactivate selection handles:\n\n• Drag the text to position, or rotate it.\n• Arrow Keys nudge text 1px (5px with Shift)\n• Press Ctrl+Z to Undo and Ctrl+Shift+Z to Redo\n\nClick outside the box to deactivate.\nUse ← → arrow keys to browse names.", "tut6_t": "5. Alignment & Splitting 📐", "tut6_b": "• ALIGNMENT — Left / Center / Right\n\n• TEXT SPLITTING modes:\n  Auto — splits long names (≥ threshold)\n  No Split — always single line\n  Always — always first + last name\n", "tut7_t": "6. Generate & Export 🚀", "tut7_b": "Once you're happy with the preview:\n\n• Click \"Generate All\" to batch-create\n  all certificates as PDFs\n\n• Use Save / Import to store your\n  settings as a JSON file for reuse.", "tut8_t": "You're all set! ✅", "tut8_b": "That's everything you need to know.\n\nClick this \"?\" button anytime\nto see this tutorial again.\n\nHappy certificate making! 🎓",
         "tut_step": "Step", "tut_cont": "Click to continue", "tut_close": "Click to close"
     },
     "tr": {
-        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Excel Dosyası", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Yazı Tipi Dosyası", "sys_font": "Sistem Yazı Tipi", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluğu", "rot": "Döndürme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme Yok", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "normalize": "Normalleştir", "gen_all": "▶  Tümünü Oluştur", "ready": "Hazır", "settings_hdr": "EKSTRALAR", "save": "💾 Kaydet", "import": "📂 İçe Aktar", "preview_hdr": "📄  Sertifika Önizlemesi", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yüklenmedi", "sel_tpl": "Önizleme için bir şablon PDF seçin", "fail_render": "Önizleme oluşturulamadı\n(şablon ve font yollarını kontrol edin)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Oluşturuluyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path} konumuna kaydedildi", "imp_msg": "Ayarlar {path} konumundan içe aktarıldı",
-        "tut1_t": "Hoş Geldiniz! 👋", "tut1_b": "Sertifika Oluşturucu'ya hoş geldiniz.\n\nBir Excel dosyasından isimleri okur ve\nkişiselleştirilmiş sertifikalar oluşturmak\niçin bunları şablonun üzerine yazar.", "tut2_t": "1. Dosyaları Yükle 📁", "tut2_b": "Sol paneldeki DOSYALAR menüsünden\ndosyalarınızı yükleyerek başlayın:\n\n• Şablon PDF — sertifika tasarımınız\n• Excel Dosyası — isim listesi\n• Çıktı Klasörü — kaydedileceği konum\n\nKlasördeki dosyalar otomatik bulunur.", "tut3_t": "2. Yazı Tipi Seçimi 🔤", "tut3_b": "YAZI TİPİ altından fontunuzu seçin:\n\n• Yazı Tipi Dosyası — bir .ttf/.otf dosyası\n• Sistem Yazı Tipi — yüklü fontlardan biri\n\nDüğmeler ile iki format arasında\ngeçiş yapabilirsiniz.", "tut4_t": "3. Metin Ayarları ✏️", "tut4_b": "Yazının duruşunu yapılandırın:\n\n• Yazı Boyutu, Y, X Ofseti\n• Satır Boşluğu (çok satırlı isimler için)\n• Döndürme (isteğe bağlı 15° yaslama)\n• Renk seçici\n\nDeğişiklikler anında önizlemeyi günceller.", "tut5_t": "4. Etkileşimli Önizleme 🖱️", "tut5_b": "Kontrolleri görmek için önizlemedeki\nmetne doğrudan tıklayın:\n\n• Konumlandırmak veya döndürmek için sürükle\n• Yön Tuşları metni 1px kaydırır (Shift ile 5px)\n• Geri almak için Ctrl+Z (Yinelemek için Ctrl+Shift+Z)\n\nKapatmak için dışarıya tıklayın.\nİsimleri ← → ile gezin.", "tut6_t": "5. Hizalama & Bölme 📐", "tut6_b": "• HİZALAMA — Sol / Orta / Sağ\n\n• METİN BÖLME modları:\n  Otomatik — uzun isimleri (≥ eşik) böler\n  Bölme Yok — her zaman tek satırda tutar\n  Her Zaman — her zaman isim + soyisim\n", "tut7_t": "6. Dışa Aktarım 🚀", "tut7_b": "Önizlemeden memnun olduğunuzda:\n\n• Bütün sertifikaları PDF yazdırmak\n  için \"Tümünü Oluştur\"a tıklayın\n\n• Tüm projenizin ayarlarını JSON'a\n  Kaydet / İçe Aktar yapabilirsiniz.", "tut8_t": "Her Şey Hazır! ✅", "tut8_b": "Bilmeniz gerekenler bu kadar.\n\nİstediğiniz bir zaman sağ üstteki \"?\"\nbutonuna tıklayarak tekrar okuyun.\n\nİyi sertifikalamalar! 🎓",
+        "title": "Sertifika Oluşturucu", "settings": "⚙  Ayarlar", "files": "DOSYALAR", "tpl_pdf": "Şablon PDF", "excel": "Veri Dosyası (Excel/CSV)", "out_dir": "Çıktı Klasörü", "font": "YAZI TİPİ", "font_file": "Yazı Tipi Dosyası", "sys_font": "Sistem Yazı Tipi", "file": "Dosya", "family": "Aile", "text_ops": "METİN AYARLARI", "font_size": "Yazı Boyutu", "text_y": "Metin Y", "x_off": "X Ofseti", "line_sp": "Satır Boşluğu", "rot": "Döndürme °", "snap": "15° Yasla", "color": "Renk", "align": "HİZALAMA", "a_left": "Sol", "a_center": "Orta", "a_right": "Sağ", "split": "METİN BÖLME", "s_auto": "Otomatik", "s_none": "Bölme Yok", "s_always": "Her Zaman", "s_thresh": "Eşik", "data": "VERİ", "name_col": "İsim Sütunu", "normalize": "Normalleştir", "gen_all": "▶  Tümünü Oluştur", "ready": "Hazır", "settings_hdr": "EKSTRALAR", "save": "💾 Kaydet", "import": "📂 İçe Aktar", "preview_hdr": "📄  Sertifika Önizlemesi", "prev": "◀  Önceki", "next": "Sonraki  ▶", "no_data": "Veri yüklenmedi", "sel_tpl": "Önizleme için bir şablon PDF seçin", "fail_render": "Önizleme oluşturulamadı\n(şablon ve font yollarını kontrol edin)", "done_gen": "Bitti! {count} sertifika oluşturuldu.", "gen_msg": "Oluşturuluyor: {name}  ({idx}/{total})", "sav_msg": "Ayarlar {path} konumuna kaydedildi", "imp_msg": "Ayarlar {path} konumundan içe aktarıldı",
+        "tut1_t": "Hoş Geldiniz! 👋", "tut1_b": "Sertifika Oluşturucu'ya hoş geldiniz.\n\nBir Excel veya CSV dosyasından isimleri okur ve\nkişiselleştirilmiş sertifikalar oluşturmak\niçin bunları şablonun üzerine yazar.", "tut2_t": "1. Dosyaları Yükle 📁", "tut2_b": "Sol paneldeki DOSYALAR menüsünden\ndosyalarınızı yükleyerek başlayın:\n\n• Şablon PDF — sertifika tasarımınız\n• Veri Dosyası — Excel veya CSV dosyası\n• Çıktı Klasörü — kaydedileceği konum\n\nKlasördeki dosyalar otomatik bulunur.", "tut3_t": "2. Yazı Tipi Seçimi 🔤", "tut3_b": "YAZI TİPİ altından fontunuzu seçin:\n\n• Yazı Tipi Dosyası — bir .ttf/.otf dosyası\n• Sistem Yazı Tipi — yüklü fontlardan biri\n\nDüğmeler ile iki format arasında\ngeçiş yapabilirsiniz.", "tut4_t": "3. Metin Ayarları ✏️", "tut4_b": "Yazının duruşunu yapılandırın:\n\n• Yazı Boyutu, Y, X Ofseti\n• Satır Boşluğu (çok satırlı isimler için)\n• Döndürme (isteğe bağlı 15° yaslama)\n• Renk seçici\n\nDeğişiklikler anında önizlemeyi günceller.", "tut5_t": "4. Etkileşimli Önizleme 🖱️", "tut5_b": "Kontrolleri görmek için önizlemedeki\nmetne doğrudan tıklayın:\n\n• Konumlandırmak veya döndürmek için sürükle\n• Yön Tuşları metni 1px kaydırır (Shift ile 5px)\n• Geri almak için Ctrl+Z (Yinelemek için Ctrl+Shift+Z)\n\nKapatmak için dışarıya tıklayın.\nİsimleri ← → ile gezin.", "tut6_t": "5. Hizalama & Bölme 📐", "tut6_b": "• HİZALAMA — Sol / Orta / Sağ\n\n• METİN BÖLME modları:\n  Otomatik — uzun isimleri (≥ eşik) böler\n  Bölme Yok — her zaman tek satırda tutar\n  Her Zaman — her zaman isim + soyisim\n", "tut7_t": "6. Dışa Aktarım 🚀", "tut7_b": "Önizlemeden memnun olduğunuzda:\n\n• Bütün sertifikaları PDF yazdırmak\n  için \"Tümünü Oluştur\"a tıklayın\n\n• Tüm projenizin ayarlarını JSON'a\n  Kaydet / İçe Aktar yapabilirsiniz.", "tut8_t": "Her Şey Hazır! ✅", "tut8_b": "Bilmeniz gerekenler bu kadar.\n\nİstediğiniz bir zaman sağ üstteki \"?\"\nbutonuna tıklayarak tekrar okuyun.\n\nİyi sertifikalamalar! 🎓",
         "tut_step": "Adım", "tut_cont": "Devam etmek için tıklayın", "tut_close": "Kapatmak için tıklayın"
     }
 }
@@ -894,7 +894,7 @@ class CertificateApp(tk.Tk):
             self.render_preview()
 
     def _browse_excel(self):
-        path = filedialog.askopenfilename(parent=self, title="Select Excel File", filetypes=[("Excel files", "*.xlsx *.xls")])
+        path = filedialog.askopenfilename(parent=self, title="Select Data File", filetypes=[("Excel files", "*.xlsx *.xls"), ("CSV files", "*.csv"), ("All files", "*.*")])
         if path:
             self.excel_var.set(path)
             self.load_excel()
@@ -919,9 +919,14 @@ class CertificateApp(tk.Tk):
         if os.path.exists(template):
             self.template_var.set(template)
 
+        # Auto-detect Excel or CSV file
         excel = os.path.join(base, "List.xlsx")
         if os.path.exists(excel):
             self.excel_var.set(excel)
+        else:
+            csv_file = os.path.join(base, "List.csv")
+            if os.path.exists(csv_file):
+                self.excel_var.set(csv_file)
 
         outdir = os.path.join(base, "Output")
         self.outdir_var.set(outdir)
@@ -929,24 +934,35 @@ class CertificateApp(tk.Tk):
         if self.excel_var.get():
             self.load_excel()
 
-    # ─── Excel Loading ────────────────────────────────────────
+    # ─── Data File Loading (Excel & CSV) ─────────────────────
 
     def load_excel(self):
         path = self.excel_var.get()
         if not path or not os.path.exists(path):
             return
         try:
-            self.df = pd.read_excel(path)
+            # Determine file type and load accordingly
+            if path.lower().endswith(".csv"):
+                self.df = pd.read_csv(path)
+            else:
+                self.df = pd.read_excel(path)
+            
             cols = list(self.df.columns)
             self.column_combo["values"] = cols
-            if "Column 2" in cols:
-                self.column_var.set("Column 2")
+            if "Names" in cols:
+                self.column_var.set("Names")
+            elif "İsim" in cols:
+                self.column_var.set("İsim")
+            elif "İsimler" in cols:
+                self.column_var.set("İsimler")
+            elif "Column 1" in cols:
+                self.column_var.set("Column 1")
             elif len(cols) > 0:
                 self.column_var.set(cols[0])
             self.column_var.trace_add("write", lambda *_: self._on_column_change())
             self._refresh_names()
         except Exception as e:
-            messagebox.showerror("Error", f"Failed to load Excel:\n{e}")
+            messagebox.showerror("Error", f"Failed to load data file:\n{e}")
 
     def _on_column_change(self):
         self._refresh_names()
@@ -1329,7 +1345,7 @@ class CertificateApp(tk.Tk):
         if self.generating:
             return
         if not self.names:
-            messagebox.showwarning("Warning", "No names loaded. Please load an Excel file first.")
+            messagebox.showwarning("Warning", "No names loaded. Please load a data file (Excel or CSV) first.")
             return
 
         outdir = self.outdir_var.get()
