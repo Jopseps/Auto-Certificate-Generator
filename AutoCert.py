@@ -894,7 +894,7 @@ class CertificateApp(tk.Tk):
             self.render_preview()
 
     def _browse_excel(self):
-        path = filedialog.askopenfilename(parent=self, title="Select Data File", filetypes=[("Excel files", "*.xlsx *.xls"), ("CSV files", "*.csv"), ("All files", "*.*")])
+        path = filedialog.askopenfilename(parent=self, title="Select Data File", filetypes=[("Excel & CSV files", "*.xlsx *.xls *.csv"), ("Excel files", "*.xlsx *.xls"), ("CSV files", "*.csv"), ("All files", "*.*")])
         if path:
             self.excel_var.set(path)
             self.load_excel()
